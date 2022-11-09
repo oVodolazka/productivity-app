@@ -17,6 +17,18 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
-        ]
-    }
+            {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader','less-loader'],
+            },
+            {
+                test:/\.hbs$/,
+                use: ['handlebars-loader']
+            }
+        ],
+
+    },
+
 };
+
