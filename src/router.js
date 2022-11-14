@@ -48,7 +48,7 @@ export class Router {
       document.querySelector('main').innerHTML = this.routes[key].title;
     } else {
       const main = document.createElement('main')
-      main.innerHTML = this.routes[key].html
+      main.innerHTML = this.routes[key].title
       body.appendChild(main)
     }
   }
@@ -62,10 +62,9 @@ export class Router {
     const self = this;
 
     for (let elem in this.routes) {
-      const link = document.createElement('a')
+      const link = document.createElement('p')
       nav.appendChild(link)
       link.innerHTML = this.routes[elem].html
-      link.setAttribute('href', this.routes[elem].title);
       link.addEventListener('click', function (event) {
         event.preventDefault()
         self.navigate(`${elem}`)
