@@ -2,16 +2,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore/lite';
 
-// import { doc, onSnapshot, collection, query, where, onSnapshot } from "firebase/firestore";
-
-// useEffect(() => {
-//     const q = query(collection(db, "tasks"))
-//     const unsub = onSnapshot(q, (querySnapshot) => {
-//       console.log("Data", querySnapshot.docs.map(d => doc.data()));
-//     });
-//   }, [])
-
-
 class FirebaseService {
     constructor() {
         const firebaseConfig = {
@@ -27,12 +17,7 @@ class FirebaseService {
     }
 }
 
-// export const dataBase = firebase.firestore();
-
 const firebaseService = new FirebaseService();
-
-// db.app.
-
 export default firebaseService;
 
 
