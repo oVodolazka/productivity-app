@@ -1,24 +1,28 @@
 const renderTemplate = template => console.log('render template', template)
 import { EventBus } from 'light-event-bus';
+import { reportsTemplate } from './components/reports/index.js'
+import { taskListTemplate } from './components/taskList/index.js'
+import {timerTemplate} from './components/timer/index.js'
+import { settingsTemplate } from './components/settings/index.js'
 
 export class Router {
   constructor() {
     this.routes = {
       '/task-list': {
         title: 'Task list',
-        html: 'd'//settingsTemplate;
+        html: taskListTemplate()
       },
       '/settings': {
-        title: 'setting',
-        html: '<p>settings</p>'
+        title: 'settings',
+        html: settingsTemplate()
       },
       '/timer': {
         title: 'Timer',
-        html: '<p>timer<p>'
+        html: timerTemplate()
       },
       '/reports': {
-        title: 'Reports',
-        html: '<p>reports<p>'
+        title: 'Reportsw',
+        html: reportsTemplate()
       }
     }
     this.eventBus = new EventBus()
@@ -41,10 +45,10 @@ export class Router {
     const body = document.querySelector('body')
 
     if (document.querySelector('main')) {
-      document.querySelector('main').innerHTML = this.routes[key].html;
+      document.querySelector('main').innerHTML = this.routes[key].title;
     } else {
       const main = document.createElement('main')
-      main.innerHTML = this.routes[key].html
+      main.innerHTML = this.routes[key].title
       body.appendChild(main)
     }
   }
@@ -58,17 +62,14 @@ export class Router {
     const self = this;
 
     for (let elem in this.routes) {
-      const link = document.createElement('a')
+      const link = document.createElement('p')
       nav.appendChild(link)
       link.innerHTML = this.routes[elem].html
-      link.setAttribute('href', this.routes[elem].title);
       link.addEventListener('click', function (event) {
         event.preventDefault()
         self.navigate(`${elem}`)
       })
     }
-  
-    // setTimeout(() => this.eventBus.publish('event', 'message') , 1000);
   }
 
   navigate(path) {

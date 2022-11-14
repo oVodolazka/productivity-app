@@ -1,19 +1,12 @@
 import _ from 'lodash';
 import '../app.less';
-//import lovePhotoSrc from '../assets/images/1.jpg';// example how to import images, not sure if u will need this
 import myTemplate from './components/settings/index.hbs'
 import { Router } from './router';
 import firebaseService from './services/firebase'
-
-// import collection from './services/firebase'
 import { collection, getDocs, doc, addDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore/lite';
 
-//const renderTemplate = template => console.log('render template', template)
+new Router;
 
-
-const routerObj = new Router;
-
-window.routerObj = routerObj;
 
 async function addTask(db) {
     const col = collection(db, 'tasks');
@@ -29,20 +22,17 @@ async function getTasks(db) {
     const col = collection(db, 'tasks');
     const snapshot = await getDocs(col);
     const cityList = snapshot.docs.map(doc => doc.data());
-    console.log(cityList)
     return cityList;
 }
 
 async function removeTask(db) {
-    // const col = collection(db, 'tasks');
     await deleteDoc(doc(db, "tasks", "8prAxAcdSprp21q4f2Rc"));
 }
 
 async function getDocument(db) {
     const docRef = doc(firebaseService.db, "tasks", "HCsmd0y2aq5xwptT4STJ");
     const docSnap = await getDoc(docRef);
-    // docSnap.data();
-    console.log(docSnap.data())
+    docSnap.data()
 }
 
 async function updateDocument() {
@@ -52,26 +42,10 @@ async function updateDocument() {
     });
 }
 
-// getDocument()
-
 const addButton = document.querySelector('.add_data')
 const getButton = document.querySelector('.get_data')
 const removeButton = document.querySelector('.remove_data')
 const updateButton = document.querySelector('.update_data')
 
-getButton.addEventListener('click', function () {
-    getTasks(firebaseService.db)
-})
 
-addButton.addEventListener('click', function () {
-    addTask(firebaseService.db)
-})
-removeButton.addEventListener('click', function () {
-    removeTask(firebaseService.db)
-})
-
-updateButton.addEventListener('click',function(){
-    updateDocument()
-    
-})
 getDocument()
