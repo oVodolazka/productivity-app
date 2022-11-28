@@ -1,0 +1,25 @@
+{{#each data}}
+<div class="settings__daily {{class}}">
+    <div class="settings__daily-day">{{this.currDate}}</div>
+    <div class="settings__daily-wrapper">
+        <span class="settings__daily-span">{{this.title}}</span>
+        <span class="settings__daily-span-main"> {{this.description}}</span>
+    </div>
+    <button class="settings__daily-button"></button>
+    <div class="settings__daily-icon settings__daily-icon--orange"></div>
+</div>
+{{/each}}
+
+
+{{!-- {{log data}} --}}
+
+{{!-- <div class="settings__daily settings__daily--red">
+            <div class="settings__daily-day">TODAY</div>
+            <div class="settings__daily-wrapper">
+                <span class="settings__daily-span">Lorem ipsum sit amet</span>
+                <span class="settings__daily-span-main">If a section of news is presented within a box that includes a
+                    border, background color, and other styles, the class of news might seem like a good option. </span>
+            </div>
+            <button class="settings__daily-button"></button>
+            <div class="settings__daily-icon settings__daily-icon--orange"></div>
+        </div> --}}

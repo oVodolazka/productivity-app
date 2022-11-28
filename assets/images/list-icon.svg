@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16" width="20" height="16">
+	<title>icons8-list-svg</title>
+	<defs>
+		<image  width="21" height="20" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAMAAABVlYYBAAAAAXNSR0IB2cksfwAAADxQTFRFAAAA7/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P27/P2msiz3QAAABR0Uk5TAAoFx73A3/8fNzYIHBrUxcshDQ+s07DNAAAAPUlEQVR4nGNgoDtgZGLEIsrMwsrGwI4EwKJgBpGiHJxcRLuBFHOxizJwYzWYh5dC2/j4+QUwRQWFhFGNBACsYASA5+h6XAAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="img1" href="#img1" x="-2" y="-4" />
+</svg>

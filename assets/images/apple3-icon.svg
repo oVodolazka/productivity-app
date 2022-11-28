@@ -1,0 +1,14 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+	<title>apple 64</title>
+	<defs>
+		<image  width="56" height="64" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAABAAQMAAAB1OSbxAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAA20lEQVR4nJXRPQ7CMAwF4BdlyJiVqb0GAz9XYgSBaE/CSZAI6g43qLp1JBIDHRAmdtKCykSHfFLiOE8uAGgP+UwXtcl8mlxHF2l/nuo3yW2TdNF78lF+a5/tiS8U1NIrSEEKj79y6goH4zU528A6kKo8bIm9OnvkwERdOiwkyQ4z6XWEZLKHqKmjuoZkUtfkbVAyqjaKPw33xv16V+Ilvo/sR8kb1rGZuB60ov/IQ1MeRmygeahh0RzIOD4CF/WCf04YFnhEPKwlCE/eq6jiM0tEXGuoIu6hCFTiDf+CbdQGsfWXAAAAAElFTkSuQmCC"/>
+		<image  width="12" height="19" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATAQMAAACeO37qAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAALklEQVR4nGOob2D4f4Dh/wMGBiD6AEYPGOSB6ACIZISIFIDRB4aDH0AqgertGABPjBRZRI229AAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="4" y="0" />
+	<text id="" style="transform: matrix(1,0,0,1,96,25)" >
+	</text>
+	<use id="3" href="#img2" x="26" y="28" />
+</svg>

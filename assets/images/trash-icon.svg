@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="25" height="25">
+	<title>trash-icon</title>
+	<defs>
+		<image  width="106" height="128" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAACAAQMAAADZMG4wAAAAAXNSR0IB2cksfwAAAAZQTFRF////h5urYgn3ygAAAAJ0Uk5TAP9bkSK1AAABDUlEQVR4nLXVOxKDIBAG4GUoKLlBPIrXSgdH4ygegZKCgay8JGqyMibbMF8h7o7jvwBYPMZooZVAuo0S6TdOyPAjLsD+QBVbaQC2KS551lo2z1rL5Vlr+XeG3P5nzh0jcmnNsSNVTw3KbKOQ7N8TDUHVUxPcjbAbEObWR+pokELDA+AJSq9cpIEZIFTiB1SaDTLSnChaJCcJJ7Q/ICuUXygL/S2mv0M6go6k8PwCxS2KwhQ7wl+hG6I4Iz/Qj1IemIKUhzvkmfIC2TntGNMuYJFguMCp53ROGCPrb0Z6jBG5/tWJ2mHICNOYDtixZHHN4HK2LNzR5Gc+MF/ZkjLfWPdG2Uh155QtWjfSOsELC/riYWA/71MAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="11" y="0" />
+</svg>
