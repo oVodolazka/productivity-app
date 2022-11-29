@@ -1,6 +1,8 @@
 import { EventBus } from 'light-event-bus';
 import renderMyTasks from './tasklist.hbs'
+import tasklistEditModal from '../tasklist-edit-modal/tasklist-edit-modal.hbs'
 
+//console.log(tasklistEditModal())
 
 
 class TasklistView {
@@ -17,8 +19,43 @@ class TasklistView {
         const dataWrapper = document.querySelector('.settings__daily-container')
         dataWrapper.innerHTML = '';
         dataWrapper.innerHTML = html;
+        const self = this;
+
+        const buttons =  document.querySelectorAll('.settings__daily-button')
+        buttons.forEach(function (button) {
+            button.addEventListener('click',self.buttonEdit)
+        })
+    }
+
+    buttonEdit(e){  
+        console.log(e.target.parentElement)
+        const html = tasklistEditModal();
+        const body = document.querySelector('body');
+        const modalFader = document.createElement('div')
+        modalFader.classList.add('modal-fader')
+        body.appendChild(modalFader)
+        modalFader.innerHTML = html;
+        const cancelButton = document.querySelector('.modal-button-cancel')
+        cancelButton.addEventListener('click',function(){
+            modalFader.remove()
+        })// переместить куда то?
     }
 }
+
+// function buttonEdit(){
+//     const html = tasklistEditModal();
+//     // editModal.innerHTML = html;
+//     const body = document.querySelector('body');
+//     const modalFader = document.createElement('div')
+//     modalFader.classList.add('modal-fader')
+//     body.appendChild(modalFader)
+//     modalFader.innerHTML = html;
+
+//     const cancelButton = document.querySelector('.modal-button-cancel')
+//     cancelButton.addEventListener('click',function(){
+//         modalFader.remove()
+//     })
+// }
 
 //console.log(arr)
 // function createElement(tagName, parent, classes, innerHTML, attributes = []) {
