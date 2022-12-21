@@ -1,11 +1,14 @@
 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-	<title>apple5-icon-svg</title>
+	<title>apple3-icon-svg</title>
 	<defs>
 		<image width="56" height="64" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAABAAQMAAAB1OSbxAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAA20lEQVR4nJXRPQ7CMAwF4BdlyJiVqb0GAz9XYgSBaE/CSZAI6g43qLp1JBIDHRAmdtKCykSHfFLiOE8uAGgP+UwXtcl8mlxHF2l/nuo3yW2TdNF78lF+a5/tiS8U1NIrSEEKj79y6goH4zU528A6kKo8bIm9OnvkwERdOiwkyQ4z6XWEZLKHqKmjuoZkUtfkbVAyqjaKPw33xv16V+Ilvo/sR8kb1rGZuB60ov/IQ1MeRmygeahh0RzIOD4CF/WCf04YFnhEPKwlCE/eq6jiM0tEXGuoIu6hCFTiDf+CbdQGsfWXAAAAAElFTkSuQmCC"/>
-		<image  width="13" height="19" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATAQMAAABx+RXUAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAAOUlEQVR4nGPgb2Cwf8BQ/4Ch4APDgwIGhQIGhgIGxg8M/A/A6AOIC0QPKhg+FDD8+MBQ/wGknp0BAAvNEqFt036uAAAAAElFTkSuQmCC"/>
+		<image  width="13" height="19" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATAQMAAABx+RXUAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAAKUlEQVR4nGOo/8AAQQUMCFR/ACRS8YGBoYKBwQKKPlSARIDi9g8Y2BkA9K8Qqfa7ciEAAAAASUVORK5CYII="/>
 	</defs>
 	<style>
+		tspan { white-space:pre } 
 	</style>
 	<use id="img1" href="#img1" transform="matrix(1,0,0,1,4,0)"/>
-	<use id="3" href="#img2" x="26" y="28"/>
+	<use id="5" href="#img2" x="26" y="27"/>
+	<text id="Text layer 2" style="transform: matrix(1,0,0,1,113.328,56.329)" >
+	</text>
 </svg>

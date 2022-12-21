@@ -5,13 +5,13 @@ import { getFirestore } from 'firebase/firestore/lite';
 class FirebaseService {
     constructor() {
         const firebaseConfig = {
-            apiKey: "AIzaSyCIsyJVixW_anbMVYdAYmetDCv8T4O5XvM",
-            authDomain: "productivity-app-e799e.firebaseapp.com",
-            projectId: "productivity-app-e799e",
-            storageBucket: "productivity-app-e799e.appspot.com",
-            messagingSenderId: "1010854654915",
-            appId: "1:1010854654915:web:aa077ba1576968f3504376"
-        };
+            apiKey: "AIzaSyBXnohuiOwAt7lqSKUzsfdYXnoX7CT2WI8",
+            authDomain: "productivity-paid.firebaseapp.com",
+            projectId: "productivity-paid",
+            storageBucket: "productivity-paid.appspot.com",
+            messagingSenderId: "985010783240",
+            appId: "1:985010783240:web:a223a2b697b8d56b463dbd"
+          };
         const app = initializeApp(firebaseConfig);
         this.db = getFirestore(app);
     }
