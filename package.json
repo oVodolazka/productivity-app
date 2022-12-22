@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.19.4",
-    "css-loader": "^6.7.1",
+    "air-datepicker": "^3.3.3",
+    "css-loader": "^6.7.3",
     "firebase": "^9.13.0",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.2",

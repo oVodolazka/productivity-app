@@ -1,0 +1,125 @@
+
+@img-path: "/assets/images";
+
+body {
+    font-size: 20px;
+    background-color: #2f3e4f;
+    height: 900px;
+}
+.page-heading {
+    color: white;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    padding: 20px 0 40px 0;
+    font-weight: bold;
+    background-color: #2f3e4f;
+}
+.settings-sticky {
+    background-color: #2f3e4f;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 3;
+    height: 120px;
+    padding: 0;
+}
+.header {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    &.active {
+        box-shadow: -2px 3px 42px -2px rgba(0, 0, 0, 0.59);
+        justify-content: space-between;
+    }
+
+    &-wrap button {
+        width: 20px;
+        margin-left: 25px;
+    }
+    button {
+        height: 20px;
+        border: none;
+        background-position: center;
+        background-color: transparent;
+    }
+
+    &__img {
+        background-image: url("@{img-path}/header-logo.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 65px;
+        display: none;
+        margin-left: 68px;
+        &.active {
+            display: block;
+        }
+    }
+    &__button__wrap-report {
+        display: flex;
+        justify-content: center;
+        padding: 0 70px 20px 70px;
+    }
+
+    &-wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 50px 7.4%;
+    }
+    &-icon-signal {
+        background-image: url("@{img-path}/signal-icon-active.svg");
+        background-repeat: no-repeat;
+        background-size: 19px;
+        &.active {
+          background-image: url("@{img-path}/iconsignal-svg.svg");
+        }
+    }
+    &-icon-list {
+      background-image: url("@{img-path}/list-icon-active.svg");
+        background-size: 23px;
+        background-repeat: no-repeat;
+        &.active {
+          background-image: url("@{img-path}/list-icon.svg");
+        }
+    }
+    &__setting-icon {
+        background-size: 21px;
+        background-image: url("@{img-path}/setting-icon.svg");
+        &.active {
+            background-size: 21px;
+            background-image: url("@{img-path}/setting-icon-active.svg");
+        }
+    }
+    &__span-edit {
+        color: white;
+        font-size: 22px;
+        display: block;
+        text-align: center;
+        padding: 20px 0 25px 0;
+        font-weight: bold;
+    }
+    &__span-description {
+        color: white;
+        padding-bottom: 25px;
+        font-size: 16px;
+        display: block;
+        text-align: center;
+    }
+}
+
+
+
+  .modal__welcome-header{
+    color: white;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    padding: 20px 0 40px 0;
+    font-weight: bold;
+  }
+

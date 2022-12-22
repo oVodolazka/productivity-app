@@ -1,0 +1,135 @@
+<div class="modal-add">
+    {{!-- <div class="modal-wrap">
+        <div class="modal-button-wrapper-add">
+            <button class="modal-button-cancel"></button>
+            <button class="modal-button-done"></button>
+        </div>
+    </div> --}}
+    <div class="modal-wrap">
+        <div class='modal-button-wrapper-trash'>
+            <button class="modal-button-trash"></button>
+        </div>
+        <div class="modal-button-wrapper">
+            <button class="modal-button-cancel"></button>
+            <button class="modal-button-done"></button>
+        </div>
+    </div>
+
+    <span class="modal-span page-heading-modal">Add task</span>
+    <div class="modal">
+        <span class="modal-name">TITLE</span>
+        <input class="modal-value title" value="Add title here">
+    </div>
+    <div class="modal">
+        <span class="modal-name">DESCRIPTION</span>
+        <input class="modal-value description" value="Add description here">
+    </div>
+    <div class="modal">
+        <span class="modal-name">CATEGORY</span>
+        <div class="modal-radio__wrapper category">
+            <div class="">
+                <input class='modal-radio-label modal-radio-label--work' data-value='work' type="radio" name="category"
+                    id="r1">
+                <label for="r1">Work</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--education' data-value='education' type="radio"
+                    name="category" id="r2">
+                <label for="r2">Education</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--hobby' data-value='hobby' type="radio"
+                    name="category" id="r3">
+                <label for="r3">Hobby</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--sport' data-value='sport' type="radio"
+                    name="category" id="r4">
+                <label for="r4">Sport</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--other' data-value='other' type="radio"
+                    name="category" id="r5">
+                <label for="r5">Other</label>
+            </div>
+
+            {{!-- <label class='modal-radio-label modal-radio-label--work'><input class='modal-radio' type="radio" name="category"
+                    value="work" >Work</label>
+            <label class='modal-radio-label modal-radio-label--education'><input class='modal-radio' type="radio" name="category"
+                    value="education">Education</label>
+            <label class='modal-radio-label modal-radio-label--hobby'><input class='modal-radio' type="radio" name="category"
+                    value="hobby">Hobby</label>
+            <label class='modal-radio-label modal-radio-label--sport'><input class='modal-radio' type="radio" name="category"
+                    value="sport">Sport</label>
+            <label class='modal-radio-label modal-radio-label--other'><input class='modal-radio' type="radio" name="category"
+                    value="other">Other</label> --}}
+        </div>
+    </div>
+    <div class="modal">
+        <span class="modal-name">DEADLINE</span>
+        <div class="deadline-wrapper">
+            <input class="modal-value deadline" value="March 23, 2022">
+        </div>
+    </div>
+    <div class="modal">
+        <span class="modal-name">ESTIMATION</span>
+        <div class="modal-estimation">
+            <fieldset class="star-rating">
+                <input name="rating" value="1" type="radio" id="rating1">
+                <label for="rating1">
+                    <span class="hide-visually">1 Star</span>
+                    <span aria-hidden="true" class="star star-1">&#63743;</span>
+                </label>
+
+                <input name="rating" value="2" type="radio" id="rating2">
+                <label for="rating2">
+                    <span class="hide-visually">2 Stars</span>
+                    <span aria-hidden="true" class="star star-2"  id="">&#63743;</span>
+                </label>
+
+                <input name="rating" value="3" type="radio" id="rating3">
+                <label for="rating3">
+                    <span class="hide-visually">3 Stars</span>
+                    <span aria-hidden="true" class="star star-3"  id="" >&#63743;</span>
+                </label>
+
+                <input name="rating" value="4" type="radio" id="rating4">
+                <label for="rating4">
+                    <span class="hide-visually">4 Stars</span>
+                    <span aria-hidden="true" class="star star-4"  id=" ">&#63743;</span>
+                </label>
+
+                <input name="rating" value="5" type="radio" id="rating5">
+                <label for="rating5">
+                    <span class="hide-visually">5 Stars</span>
+                    <span aria-hidden="true" class="star star-5"  id=""> &#63743; </span>
+                </label>
+            </fieldset>
+        </div>
+    </div>
+    <div class="modal">
+        <span class="modal-name">PRIORITY</span>
+        <div class="modal-radio__wrapper priority">
+            <div class="">
+                <input class='modal-radio-label modal-radio-label--urgent' data-value='urgent' type="radio"
+                    name="priority" id="a1">
+                <label for="a1">Urgent</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--high' data-value='high' type="radio" name="priority"
+                    id="a2">
+                <label for="a2">High</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--middle' data-value='middle' type="radio"
+                    name="priority" id="a3">
+                <label for="a3">Middle</label>
+            </div>
+            <div>
+                <input class='modal-radio-label modal-radio-label--low' data-value='low' type="radio" name="priority"
+                    id="a4">
+                <label for="a4">Low</label>
+            </div>
+        </div>
+    </div>
+</div>

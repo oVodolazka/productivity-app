@@ -1,16 +1,20 @@
 const renderTemplate = template => console.log('render template', template)
 import { EventBus } from 'light-event-bus';
 import { reportsTemplate } from './components/reports/index.js'
-import { taskListTemplate } from './components/taskList/index.js'
-import {timerTemplate} from './components/timer/index.js'
+import { taskListTemplate, taskListComponent } from './components/taskList/index.js'
+import { timerTemplate } from './components/timer/index.js'
 import { settingsTemplate } from './components/settings/index.js'
+import { welcomeTemplate } from './components/welcome/index.js'
+import { headerTemplate } from './components/header/index.js'
+
 
 export class Router {
   constructor() {
     this.routes = {
       '/task-list': {
         title: 'Task list',
-        html: taskListTemplate()
+        html: taskListTemplate(),
+        component: taskListComponent
       },
       '/settings': {
         title: 'settings',
@@ -21,8 +25,12 @@ export class Router {
         html: timerTemplate()
       },
       '/reports': {
-        title: 'Reportsw',
+        title: 'Reports',
         html: reportsTemplate()
+      },
+      '/welcome': {
+        title: 'Welcome',
+        html: welcomeTemplate()
       }
     }
     this.eventBus = new EventBus()
@@ -30,25 +38,38 @@ export class Router {
     this.defaultRoute = '/task-list';
     this.headerDraw()
     this.initialRouteRender()
+
   }
 
+
   initialRouteRender() {
+    const firstVisit = JSON.parse(localStorage.getItem('firstVisit'))
     const key = location.hash.slice(1);
-    if (!this.routes[key]) {
+
+    if (!firstVisit) {
+      localStorage.setItem('firstVisit', JSON.stringify('visited'))
+      this.navigate(('/welcome'))
+    } else if (this.routes[key]) {
+      this.renderComponent(key)
+    } else if (!this.routes[key]) {
       this.navigate(this.defaultRoute)
-    } else {
-      this.draw(location.hash.slice(1))
     }
+
+  }
+
+  renderComponent(key) {
+    this.draw(key)
+    this.routes[key].component.init()
   }
 
   draw(key) {
+    
     const body = document.querySelector('body')
-
     if (document.querySelector('main')) {
-      document.querySelector('main').innerHTML = this.routes[key].title;
+      document.querySelector('main').innerHTML = this.routes[key].html;
     } else {
       const main = document.createElement('main')
-      main.innerHTML = this.routes[key].title
+      main.innerHTML = this.routes[key].html
       body.appendChild(main)
     }
   }
@@ -59,21 +80,12 @@ export class Router {
     body.appendChild(header)
     const nav = document.createElement('nav')
     header.appendChild(nav);
-    const self = this;
-
-    for (let elem in this.routes) {
-      const link = document.createElement('p')
-      nav.appendChild(link)
-      link.innerHTML = this.routes[elem].html
-      link.addEventListener('click', function (event) {
-        event.preventDefault()
-        self.navigate(`${elem}`)
-      })
-    }
+    header.innerHTML = headerTemplate()
   }
 
   navigate(path) {
     history.pushState(null, null, `#${path}`);
     this.draw(path)
   }
+
 }

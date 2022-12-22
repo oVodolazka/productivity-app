@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+	<title>apple 64</title>
+	<defs>
+		<image  width="56" height="64" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAABACAMAAAB4KUSAAAAAAXNSR0IB2cksfwAAAMxQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////OpLhCAAAAER0Uk5TAP8EYKJGFWlXCz3s/veHAhbZ/e1PK+auBxjb+VBa9M4257Ut8FEhvPwNsOSmSgNCp+OJgPr7LNHifgYbme/49vLenyAWuxFuAAABeklEQVR4nO2W2VYDIQyGJ+5VxrG41qVatYpb3XdtXd7/neTUGYEQphM8zpW56CHh/wiEHKZJUmowtHJNmOOTEAnmTCzIz2i4CDCaqzNhElkZa6c1JeSBPy1W9IspUEmVwDM6NpojQUw6cVpNol6IzhEI0HswLqEkj+1qiiEOkqVGm/r+scQhjljIJaty+EmozlmPEPBANyUHtFufxeHe54Hwe5DBmfOxH/h/8A9A5zrq75w4kHlIC2GmNET9IJuknsex8YnJgHxqeqYRBmfnRDqfUdxCUy4uIdAaLa8AyNU1n2utC9jYxHnMMNtqCxDbLcztdADEbgOD9nhP5xT7XQc7OFQ6mG/EKaXtHB3rnPLk9Kw3dHvnF5caA3WV+Vr0vbq+0euDUErdKiX1SLudLilFV3l3r8A2+fD4RCs9//ml+dpO+2naH7y9f3wGdZU/roSsEkmJosEqZEDihSmfXBqcmeIu6FmK9P7OoakSMmghDpFkYDQaDOT2BZtgD/rg4ln6AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="4" y="0"/>
+</svg>

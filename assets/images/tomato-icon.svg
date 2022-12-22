@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+	<title>tomato</title>
+	<defs>
+		<image  width="22" height="24" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYAQMAAADEcJ8IAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAAU0lEQVR4nGNgsGFgAOMaIK5gYGD/38DA//8AAz/zAQb59gcM9swfGMr/72BIB+IDFToMBwxsGA4woOMahgSGHwwFQGzB8IFBjvEBA//5AwzM/xkA01Mb2sTnCrsAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="1" y="0" />
+</svg>

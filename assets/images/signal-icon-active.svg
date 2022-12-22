@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19" width="19" height="19">
+	<title>signal-icon-svg</title>
+	<defs>
+		<image  width="19" height="23" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAXBAMAAAAb72npAAAAAXNSR0IB2cksfwAAAC1QTFRFAAAA7/P27/P27/P27/P2h5ur7/P27/P27/P27/P27/P27/P27/P27/P27/P29XugdgAAAA90Uk5TAA4LCgz/DQcCAAEECQgVfl2QyQAAADxJREFUeJxjYIABATiLQQHBNEAwHTBFQ0MDEhDMAgSzAcGcgJsJpElmQmggWoBgNiCYGxDMA1hFLyCYDwAIqS+zlTe/RgAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="img1" href="#img1" x="1" y="-4" />
+</svg>
