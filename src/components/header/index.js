@@ -5,10 +5,9 @@ import './header.less';
 export { headerTemplate }
 
 
-function scrollDebounce(e) {
+function scrollDebounce() {
 
     if (window.scrollY !== 0) {
-        console.log('123')
         document.querySelector('.header').classList.add('active')
         document.querySelector('.header__img').classList.add('active')
     }

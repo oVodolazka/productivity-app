@@ -1,11 +1,13 @@
 const renderTemplate = template => console.log('render template', template)
-import { EventBus } from 'light-event-bus';
+//import { EventBus } from 'light-event-bus';
+//import eventBus from '../../eventBus';
 import { reportsTemplate } from './components/reports/index.js'
 import { taskListTemplate, taskListComponent } from './components/taskList/index.js'
 import { timerTemplate } from './components/timer/index.js'
 import { settingsTemplate } from './components/settings/index.js'
 import { welcomeTemplate } from './components/welcome/index.js'
 import { headerTemplate } from './components/header/index.js'
+import eventBus from './eventBus.js'
 
 
 export class Router {
@@ -33,8 +35,7 @@ export class Router {
         html: welcomeTemplate()
       }
     }
-    this.eventBus = new EventBus()
-    const subscription = this.eventBus.subscribe('event', arg => console.log(arg))
+    this.eventBus =  eventBus;
     this.defaultRoute = '/task-list';
     this.headerDraw()
     this.initialRouteRender()
@@ -54,7 +55,6 @@ export class Router {
     } else if (!this.routes[key]) {
       this.navigate(this.defaultRoute)
     }
-
   }
 
   renderComponent(key) {
@@ -87,5 +87,4 @@ export class Router {
     history.pushState(null, null, `#${path}`);
     this.draw(path)
   }
-
 }

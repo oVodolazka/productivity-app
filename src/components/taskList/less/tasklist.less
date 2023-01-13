@@ -1,4 +1,8 @@
 @img-path: "/assets/images";
+button{
+    cursor: pointer;
+}
+
 
 body {
     font-size: 20px;
@@ -75,7 +79,7 @@ body {
         position: relative;
         width: 100%;
     }
-    &__button__wrap {
+    &__button__wrap-up {
         position: absolute;
         right: 7%;
     }
@@ -91,6 +95,7 @@ body {
     &__wrapper {
         position: relative;
         justify-content: center;
+       
     }
     &__button__wrapper {
         position: absolute;
@@ -114,6 +119,7 @@ body {
         margin-left: 100px;
     }
     &__daily-wrapper {
+        width: 82%;
         display: flex;
         flex-flow: column;
         justify-content: center;
@@ -128,39 +134,93 @@ body {
         background-color: white;
         margin-top: 12px;
         //width: calc(100%);
-        height: 90px;
+        width: 100%;
+        height: 91px;
         position: relative;
+        //margin-bottom: 20px;
         &::before {
             display: block;
             content: "";
-            width: 13px;
+            width: 12px;
             height: 100%;
             position: relative;
         }
-        &--yellow::before {
+        &--yellow::before{
             background-color: #f3b63f;
         }
+        &--yellow{
+            font-size: 14px;
+            color: #f3b63f;
+        }
+        &--yellow-gl::before{
+            background-color: #f3b63f;
+            height: 119px;
+            bottom: 14px;
+        }
+
         &--blue::before {
             background-color: #60d1d7;
         }
+        &--blue {
+            font-size: 14px;
+            color: #60d1d7;
+        }
+        &--blue-gl::before{
+            background-color: #60d1d7;
+            height: 119px;
+            bottom: 14px;
+        }
+
         &--darkblue::before {
             background-color: #6eaade;
         }
-        &--violet::before {
+
+        &--darkblue{
+            font-size: 14px;
+            color:#6eaade ;
+        }
+        &--darkblue-gl::before{
+            background-color: #6eaade;
+            height: 119px;
+            bottom: 14px;
+        }
+
+        &--violet::before {   
             background-color: #aa73ca;
         }
-        &--red::before {
+
+        &--violet{
+            font-size: 14px;
+            color: #aa73ca;
+        }
+        &--violet-gl::before{
+            background-color: #aa73ca;
+            height: 119px;
+            bottom: 14px;
+        }
+
+        &--red::before{
             background-color: #e46655;
         }
+        &--red {
+            font-size: 14px;
+            color: #e46655;
+        }
+        &--red-gl::before{
+            background-color: #e46655;
+            height: 119px;
+            bottom: 14px;
+        }
+
         &-day {
-            width: 90px;
+            width: 91px;
             //    height: 100%;
             color: #9da2a7;
             font-size: 11px;
             font-weight: bold;
             text-align: center;
-            height: 7.7em;
-            line-height: 7.7em;
+            height: 91px;
+            line-height: 91px;
         }
 
         &-icon {
@@ -209,6 +269,7 @@ body {
         &-span {
             padding: 0 0 8px 10px;
             color: #f3b63f;
+            font-size: 19px;
             &-main {
                 padding-left: 10px;
                 color: #969696;
@@ -216,8 +277,10 @@ body {
             }
         }
         &-button {
+            display: none;
             position: absolute;
-            right: 100px;
+            top: 12px;
+            right: -8px;
             width: 23px;
             height: 23px;
             border: none;
@@ -225,6 +288,9 @@ body {
             background-size: 25px;
             background-color: white;
             background-repeat: no-repeat;
+        }
+        &:hover .settings__move, &:hover .settings__daily-button{
+            display:block;
         }
     }
 
@@ -359,7 +425,7 @@ body {
     }
 }
 .settings__daily:first-child{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .modal {
@@ -378,6 +444,9 @@ body {
         background-color: transparent;
         border: none;
         padding-bottom: 6px;
+        &::placeholder{
+            color: #879bab;
+        }
     }
     &-fader {
         position: fixed;
@@ -398,16 +467,15 @@ body {
     }
     &-button-cancel,
     &-button-done,
-    &-button-trash {
+    &-button-trash,&-button-cancel-rem {
         border: none;
         width: 20px;
         height: 20px;
         background-size: 20px;
         background-color: #2f3e4f;
         background-repeat: no-repeat;
-    
     }
-    &-button-cancel {
+    &-button-cancel ,&-button-cancel-rem{
         padding-right: 25px;
         background-image: url("@{img-path}/cancel-icon.svg");
     }
@@ -434,6 +502,7 @@ body {
     &-radio__wrapper {
         display: flex;
         flex-flow: row;
+        padding-bottom: 4px;
     }
     &-radio-label {
         color: #879bab;
@@ -611,8 +680,6 @@ body {
 .footer {
     width: calc(100% - 140px);
     &-top {
-        // display: flex;
-        // justify-content: space-between;
         font-size: 15px;
         color: #879bab;
         padding-top: 45px;
@@ -780,6 +847,13 @@ body {
 }
 
 .footer {
+    &__task-wrapper{
+        padding-top: 40px;
+        justify-content: center;
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+    }
     &__span {
         color: white;
         font-size: 17px;
@@ -800,18 +874,45 @@ body {
         margin-top: 30px;
         display: flex;
         justify-content: space-between;
-        padding-right: 50px;
+        flex-flow: column;
+        width: 85%;
     }
 
-    &__global {
+    &__global{
+        border: none;
+        background: transparent;
         color: #879bab;
         position: absolute;
         left: 7.4%;
         font-size: 18px;
         font-weight: bold;
-        
+        display: flex;
+        flex-flow: row;
+        position: absolute;
+        width: 1224px;
+        &-btn{ 
+            border: none;
+            background: transparent;
+            color: #879bab;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+    &-filter{
+        font-weight: normal;
+        position: absolute;
+        right: 0px;
+        &-span{
+            margin: 0 5px;
+
+        }
+        &-span.active{
+            color: white;
+        }
     }
     &__warning-notification {
+        // position: absolute;
+        // bottom: 0px;
         display: flex;
         justify-content: space-between;
         border: 0.8px solid white;
@@ -898,10 +999,9 @@ h2 {
     border-radius: 100% 100% 100% 100%;
     content: " ";
     height: 4px;
-    left: 7px;
+    left: 8px;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 32%;
     width: 4px;
     z-index: 1;
   }
@@ -950,11 +1050,11 @@ h2 {
     background-color: #879bab ;
     border-radius: 100% 100% 100% 100%;
     content: " ";
-    height: 10px;
+    height: 12px;
     left: 5px;
     position: absolute;
     top: 3px;
-    width: 10px;
+    width: 12px;
   }
 
   
@@ -995,13 +1095,40 @@ h2 {
       &--low:checked+label:after{
         border-color: #59ba9d;
         background-color: #59ba9d;
-      }
-    
-  }
+    }    
+}
 
-// .deadline-wrapper{
-//     position: relative;
-// }  
+.settings__daily-wrap{
+    width: 25px;
+    height: 25px;
+}
+
+.settings__move{
+    position: absolute;
+    display: none;
+    top: -12px;
+    right: -14px;
+    border: none;
+    background-color: transparent;
+    background-image: url("@{img-path}/iconup-2.png");
+    height: 23px;
+    width: 23px;
+    background-size: 17px;
+    background-repeat: no-repeat;
+    //background-image: iconup-2.png;
+    &-up{
+        background-image: url("@{img-path}/iconup-1.png");
+    }
+    &-down{
+        background-image: url("@{img-path}/iconup-2.png");
+    }
+}
+.settings__daily-wrap{
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    right: 110px;
+}
 
 .air-datepicker.-inline-{
     position: fixed;
@@ -1080,6 +1207,113 @@ h2 {
   color: #f3b63f;
 }
 
+.category-span{
+    display: block;
+    line-height: 8px;
+    padding-left: 20px;
+    margin-top: 10px;
+    &::before{
+        display: flex;
+        content: "";
+        height: 6px;
+        width: 6px;
+        //background-color: auto;
+        border-radius: 50%;
+        position: relative;
+        left: -17px;
+        top: 7px;
+    }
+    &::after{
+        display: flex;
+        content: "";
+        height: 12px;
+        width: 12px;
+        border: 3px solid ;
+        border-radius: 50%;
+        position: relative;
+        left: -23px;
+        top: -13px;
+   }
+}
 
+.pending{
+    pointer-events: none;
+}
 
+.delete-mode{
+    position: relative;
+    top: 30px;
+    color: #879bab;
+    font-size: 18px;
+    height: 18px;
+    display:flex;
+    span{
+        display: none;
+    }
+    &.active span {
+        display:flex;
+    }
+}
+.delete-mode-up {
+    color: #879bab;
+    font-size: 18px;
+    position: absolute;
+    left: 7%;
+    display: none;
+    margin: 0 4px;
+    display: flex;
 
+    span{
+        display: none;
+    }
+    &.active span {
+        display:flex;
+    }
+}
+
+.delete-mode-span {
+    margin: 0 6px;
+}
+
+.settings-delete-mode{
+    width: 90px;
+    height: 91px;
+    position: absolute;
+    display: none;
+    &.active{
+        display: flex;
+    }
+    &--HOBBY{
+        background-color: #e46655;
+    }
+    &--WORK{
+        background-color: #f3b63f;
+    }
+    &--EDUCATION{
+        background-color: #60d1d7;
+    }
+    &--SPORT{
+        background-color: #aa73ca;
+    }
+    &--OTHER{
+        background-color: #6ba4d7;
+    }
+    &-icon{
+        background-image: url("@{img-path}/delete-confirm.svg");
+        background-repeat: no-repeat;
+        background-size: 40px;
+        width: 90px;
+        background-position: center;
+    }
+    &-confirm{
+        background-image: url("@{img-path}/trash-icon-active.svg");
+        background-repeat: no-repeat;
+        background-size: 40px;
+        width: 90px;
+        background-position: center;
+    }
+}
+
+.select.active , .deselect.active{
+    color: white;
+}

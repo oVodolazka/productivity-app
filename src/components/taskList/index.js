@@ -6,6 +6,8 @@ import firebaseService from '../../services/firebase';
 
 import './less/tasklist.less';
 
+import tasklist from './tasklist.hbs'
+
 const view = new TasklistView();
 const model = new TasklistModel(firebaseService);
 const taskListComponent = new TasklistController(view, model);
