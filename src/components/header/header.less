@@ -84,10 +84,12 @@ body {
         background-repeat: no-repeat;
         background-size: 19.5px;
         width: 14px;
+        position: relative;
         &.active {
           background-image: url("@{img-path}/trash-icon-active.svg");
         }
     }
+    
     &-icon-list {
       background-image: url("@{img-path}/list-icon-active.svg");
         background-size: 23px;
@@ -123,12 +125,30 @@ body {
 
 
 
-  .modal__welcome-header{
+.modal__welcome-header {
     color: white;
-    font-size: 20px;
+     font-size: 20px;
     display: block;
     text-align: center;
     padding: 20px 0 40px 0;
     font-weight: bold;
-  }
+}
 
+.header-icon-trash-span{
+    display: none;
+}
+
+&.header-icon-trash.active .header-icon-trash-span{
+    background-color: rgb(194, 80, 80);
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    color: white;
+    font-size: 10px;
+    position: relative;
+    right: -3px;
+    bottom: -9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }

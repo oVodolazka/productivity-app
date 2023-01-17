@@ -13,6 +13,8 @@ import getNewTaskHtml from '../taskList/tasklist-item.hbs';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import toastAdd from '../tasklist-add-modal/toastAdd.hbs';
+import toastWarning from '../tasklist-add-modal/toastWarning.hbs';
+import toastInfo from '../tasklist-add-modal/toastInfo.hbs';
 import confirmRemove from '../tasklist-add-modal/confirm-remove.hbs';
 import { getDay } from '../../utils/common'
 
@@ -199,13 +201,33 @@ class AddTaskModalView {
         }
     }
 
-    showToast(html, classes) {
+    showToast(type) {
+        let classes;
+        let html;
+        if(type === 'warning'){
+            classes = ['footer__warning-notification', 'footer__warning-notification--blue'];
+            html = toastInfo()
+        }
+        if(type === 'error'){
+            classes = ['footer__warning-notification', 'footer__warning-notification--red'];
+            html = toastWarning()
+        }
+        if(type == 'add'){
+            html =  toastAdd()
+            classes = ['footer__warning-notification', 'footer__warning-notification--green']
+        }
+        if(type == 'delete'){
+            html = toastInfo();
+            classes = ['footer__warning-notification', 'footer__warning-notification--blue']
+        }
+
+        // html: toastInfo(), classes: ['footer__warning-notification', 'footer__warning-notification--blue'] 
         const footer = document.querySelector('.footer__button-wrap')
         const htmlToast = html;
         const wrapper = createElement('div', footer, classes, htmlToast, [{ 'style': 'position: absolute; right: 7.4%;' }])
         footer.appendChild(wrapper)
         document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
-        setInterval(() => {
+        setTimeout(() => {
             wrapper.remove()
         }, 2500)
     }

@@ -63,7 +63,6 @@ class TasklistView {
             if (e.target.classList.contains('settings__button-pomodoros')) {
                 const deselect = document.querySelectorAll('.deselect')
                 deselect.forEach(item => item.classList.remove('active'))
-
                 document.querySelector('.settings__button-pomodoros').classList.add('active')
                 document.querySelector('.settings__button-categories').classList.remove('active')
                 self.eventBus.publish('done-pressed')
@@ -78,6 +77,8 @@ class TasklistView {
                 } else {
                     document.querySelector('.delete-mode').querySelector('.deselect').classList.remove('active')
                 }
+                console.log('1')
+                this.updateCounter()
                 return
             }
             if (e.target.classList.contains('settings-delete-mode-confirm')) {
@@ -87,7 +88,6 @@ class TasklistView {
                     const id = item.parentElement.parentElement.getAttribute('data-id')
                     data.push(id)
                 })
-
                 self.eventBus.publish('tasks-selected', data)
                 return
             }
@@ -105,6 +105,7 @@ class TasklistView {
                     const tasks = parent.querySelectorAll('.settings-delete-mode-icon')
                     tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
                 }
+                this.updateCounter()
             }
             if (e.target.classList.contains('deselect')) {
                 if (e.target.parentElement.classList.contains('delete-mode-up')) {
@@ -120,11 +121,12 @@ class TasklistView {
                     const tasks = parent.querySelectorAll('.settings-delete-mode-confirm')
                     tasks.forEach(task => task.className = 'settings-delete-mode-icon')
                 }
+                this.updateCounter()
             }
             if (e.target.classList.contains('settings__button-add')) {
                 self.buttonAdd(self)
             }
-            if(e.target.classList.contains('footer__global-btn')){
+            if (e.target.classList.contains('footer__global-btn')) {
                 self.eventBus.publish('global-list-pressed', e)
                 e.target.classList.toggle('active')
             }
@@ -140,6 +142,8 @@ class TasklistView {
                 tasks.forEach(task => task.classList.toggle('active'))
                 const buttons = (document.querySelectorAll('.select,.deselect'))
                 buttons.forEach(button => button.classList.remove('active'))
+                document.querySelector('.header-icon-trash-span').innerHTML = '0'
+                document.querySelectorAll('.settings-delete-mode-confirm').forEach(item => item.className = 'settings-delete-mode-icon')
             }
         })
     }
@@ -174,7 +178,7 @@ class TasklistView {
                     tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
                 }
             }
-
+            this.updateCounter()
         } else {
             dataWrapper.innerHTML = ''
             const globalList = document.querySelector('.footer__global-btn')
@@ -205,6 +209,7 @@ class TasklistView {
             const tasks = document.querySelector('.settings__daily-container').querySelectorAll('.settings-delete-mode-icon')
             tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
         }
+        this.updateCounter()
     }
 
     buttonEdit(self, e, ) {
@@ -217,6 +222,7 @@ class TasklistView {
     buttonAdd(self) {
         if (document.querySelector('.header-icon-trash').classList.contains('active')) {
             document.querySelector('.header-icon-trash').classList.remove('active')
+            document.querySelector('.header-icon-trash-span').innerHTML = '0'
             document.querySelector('.delete-mode-up').classList.remove('active')
             document.querySelector('.delete-mode').classList.remove('active')
             const buttons = document.querySelectorAll('.settings-delete-mode')
@@ -326,10 +332,11 @@ class TasklistView {
                 tasks.forEach(item => item.classList.add('active'))
 
                 if (document.querySelector('.delete-mode').querySelector('.select').classList.contains('active')) {
-                    const buttons = document.querySelectorAll('.settings-delete-mode-icon')
+                    const buttons = parent.querySelectorAll('.settings-delete-mode-icon')
                     buttons.forEach(button => button.className = 'settings-delete-mode-confirm')
                 }
             }
+            this.updateCounter()
         }
     }
 
@@ -361,7 +368,7 @@ class TasklistView {
             const tasks = document.querySelector('.footer__task-wrapper').querySelectorAll('.settings-delete-mode-icon')
             tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
         }
-
+        this.updateCounter()
     }
 
     openConfirmModal(data) {
@@ -379,6 +386,7 @@ class TasklistView {
                 document.querySelector('.header-icon-trash').classList.remove('active')
                 document.querySelector('.delete-mode-up').classList.remove('active')
                 document.querySelector('.delete-mode').classList.remove('active')
+                document.querySelector('.header-icon-trash-span').innerHTML = '0'
             }
             if (e.target.classList.contains('modal__button-cancel') || e.target.classList.contains('modal-button-cancel-rem')) {
                 fader.remove()
@@ -387,7 +395,7 @@ class TasklistView {
                 document.querySelector('.header-icon-trash').classList.remove('active')
                 document.querySelector('.delete-mode-up').classList.remove('active')
                 document.querySelector('.delete-mode').classList.remove('active')
-
+                document.querySelector('.header-icon-trash-span').innerHTML = '0'
                 const confirm = document.querySelectorAll('.settings-delete-mode-confirm')
                 confirm.forEach(item => item.className = 'settings-delete-mode-icon')
             }
@@ -408,6 +416,12 @@ class TasklistView {
                 }
             }
         })
+    }
+
+    updateCounter() {
+        const tasks = document.querySelectorAll('.settings-delete-mode-confirm')
+        document.querySelector('.header-icon-trash-span').innerHTML = tasks.length
+        //console.log(tasks)
     }
 
 }

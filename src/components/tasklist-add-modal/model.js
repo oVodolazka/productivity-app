@@ -36,12 +36,11 @@ class addModalModel {
                 categoryClass: data.categoryClass,
                 currDate: data.currDate,
             });
-            //throw new Error
-            this.eventBus.publish('on-task-data-updated', { data, html: toastInfo(), classes: ['footer__warning-notification', 'footer__warning-notification--blue'] })
+            this.eventBus.publish('on-task-data-updated', { data, type: 'warning' })
         }
         catch (e) {
             console.log(e)
-            this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            this.eventBus.publish('error-catched', { type: 'error' })
         }
 
     }
@@ -67,11 +66,11 @@ class addModalModel {
             const list = await this.getDocument(id)
             const result = { ...list, id: id }
             //throw new Error
-            this.eventBus.publish('task-data-added', { result, html: toastAdd(), classes: ['footer__warning-notification', 'footer__warning-notification--green'] })
+            this.eventBus.publish('task-data-added', { result, type: 'add' })
 
         } catch (e) {
             console.log(e)
-            this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            this.eventBus.publish('error-catched', { type: 'error' })
         }
     }
 
@@ -83,18 +82,17 @@ class addModalModel {
         }
         catch (e) {
             console.log(e)
-            //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
         }
     }
 
     async deleteTask(id) {
         try {
             await deleteDoc(doc(this.db, 'tasks', id));
-            this.eventBus.publish('task-deleted', { id, html: toastInfo(), classes: ['footer__warning-notification', 'footer__warning-notification--blue'] })            
+            this.eventBus.publish('task-deleted', { id, type: 'delete' })
         }
-        catch(e){
+        catch (e) {
             console.log(e)
-            this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            this.eventBus.publish('error-catched', { type: 'error' })
         }
     }
 }

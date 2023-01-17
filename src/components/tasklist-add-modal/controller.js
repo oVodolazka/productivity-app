@@ -37,7 +37,7 @@ class AddTaskModalController {
             taskListComponent.view.updateGlobal(data.data)
         }
         this.view.updateModal(data.data)
-        this.view.showToast(data.html, data.classes)
+        this.view.showToast(data.type)
     }
 
     newTaskAdded(data) {
@@ -46,7 +46,7 @@ class AddTaskModalController {
 
     newTaskDraw(data) {
         this.view.drawTask(data.result)
-        this.view.showToast(data.html, data.classes)
+        this.view.showToast(data.type)
     }
 
     onTaskDelete(id) {
@@ -55,11 +55,11 @@ class AddTaskModalController {
 
     deleteTaskItem(data) {
         this.view.removeTask(data.id)
-        this.view.showToast(data.html, data.classes)
+        this.view.showToast(data.type)
     }
 
     errorCatched(data) {
-        this.view.showToast(data.html, data.classes)
+        this.view.showToast(data.type)
     }
 }
 

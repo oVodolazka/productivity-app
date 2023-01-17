@@ -1,6 +1,5 @@
 const renderTemplate = template => console.log('render template', template)
-//import { EventBus } from 'light-event-bus';
-//import eventBus from '../../eventBus';
+
 import { reportsTemplate } from './components/reports/index.js'
 import { taskListTemplate, taskListComponent } from './components/taskList/index.js'
 import { timerTemplate } from './components/timer/index.js'
