@@ -1,0 +1,22 @@
+{{#each result}}
+    <div class="wrapper">
+        <div class="{{this.0.category}}">
+            <span class = 'category-span {{this.0.categoryClass}}'> {{this.0.category}} </span>
+            {{#each this}}
+                <div class="settings__daily {{this.categoryClass}}-gl" data-id={{this.id}}>
+                    <div class="settings__daily-day">{{this.currDate}}</div>
+                    <div class="settings-delete-mode settings-delete-mode--{{this.category}}"> <div class="settings-delete-mode-icon"></div> </div>
+                    <div class="settings__daily-wrapper">
+                        <span class="settings__daily-span">{{this.title}}</span>
+                        <span class="settings__daily-span-main"> {{this.description}}</span>
+                    </div>
+                    <div class="settings__daily-wrap">
+                        <button class="settings__move settings__move-up"></button>
+                        <button class="settings__daily-button"></button>
+                    </div>
+                    <div class="settings__daily-icon--{{this.estimation}} settings__daily-icon {{this.priorityClass}}"></div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{/each}}

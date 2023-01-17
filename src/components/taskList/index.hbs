@@ -1,15 +1,41 @@
 <div class="settings">
     <div class="settings-wrapper">
-        <span class="settings__heading page-heading"> Daily Task List <button class="settings__button-add">+</button></span>
+        <span class="settings__heading page-heading"> Daily Task List <button
+                class="settings__button-add">+</button></span>
         <div class="settings__button__wrap">
-            <button class='settings__button-pomodoros active'>To Do</button>
-            <span class='settings__button__span-divide'>|</span>
-            <button class='settings__button-categories'>Done</button>
+            <div class="delete-mode-up"> 
+                <span class="select">Select All</span>
+                <span class="delete-mode-span">|</span>
+                <span class="deselect">Deselect All</span>
+            </div>
+            <div class="settings__button__wrap-up">
+                <button class='settings__button-pomodoros active'>To Do</button>
+                <span class='settings__button__span-divide'>|</span>
+                <button class='settings__button-categories'>Done</button>
+            </div>
         </div>
     </div>
     <div class="settings__daily-container">
     </div>
     <div class="footer__button-wrap">
-        <span class="footer__global">Global list ></span>
+        <div class="footer__global"> <span>Global list</span> <button class="footer__global-btn">&#9658;</button>
+            <div class="footer-filter">
+                <span class="footer-filter-span active" data-filter="all">All</span>
+                <span>|</span>
+                <span class="footer-filter-span" data-filter="urgent">Urgent</span>
+                <span>|</span>
+                <span class="footer-filter-span" data-filter="high">High</span>
+                <span>|</span>
+                <span class="footer-filter-span" data-filter="middle">Middle</span>
+                <span>|</span>
+                <span class="footer-filter-span" data-filter="low">Low</span>
+            </div>
+        </div>
+        <div class="delete-mode">
+            <span class="select">Select All</span>
+            <span class="delete-mode-span" >|</span>
+            <span class="deselect">Deselect All</span>
+        </div>
+        <div class="footer__task-wrapper"></div>
     </div>
 </div>
