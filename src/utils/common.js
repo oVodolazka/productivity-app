@@ -66,3 +66,4 @@ export const getDay = () => {
     const yyyy = getDay.getFullYear();
     return getDay = dd + '.' + mm + '.' + yyyy;
 }
+

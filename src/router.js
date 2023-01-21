@@ -1,13 +1,12 @@
-const renderTemplate = template => console.log('render template', template)
+// const renderTemplate = template => console.log('render template', template)
 
-import { reportsTemplate } from './components/reports/index.js'
+import { ReportsTemplate, ReportsComponent } from './components/reports/index.js'
 import { taskListTemplate, taskListComponent } from './components/taskList/index.js'
-import { timerTemplate } from './components/timer/index.js'
-import { settingsTemplate } from './components/settings/index.js'
-import { welcomeTemplate } from './components/welcome/index.js'
+import { TimerTemplate, TimerComponent } from './components/timer/index.js'
+import { SettingsTemplate, SettingsComponent } from './components/settings/index.js'
 import { headerTemplate } from './components/header/index.js'
 import eventBus from './eventBus.js'
-
+import { WelcomeComponent, WelcomeTemplate } from './components/welcome/index.js'
 
 export class Router {
   constructor() {
@@ -19,28 +18,31 @@ export class Router {
       },
       '/settings': {
         title: 'settings',
-        html: settingsTemplate()
+        html: SettingsTemplate(),
+        component: SettingsComponent
       },
       '/timer': {
         title: 'Timer',
-        html: timerTemplate()
+        html: TimerTemplate(),
+        component: TimerComponent
       },
       '/reports': {
         title: 'Reports',
-        html: reportsTemplate()
+        html: ReportsTemplate(),
+        component: ReportsComponent
       },
       '/welcome': {
         title: 'Welcome',
-        html: welcomeTemplate()
+        html: WelcomeTemplate(),
+        component: WelcomeComponent
       }
     }
-    this.eventBus =  eventBus;
+    this.eventBus = eventBus;
     this.defaultRoute = '/task-list';
     this.headerDraw()
     this.initialRouteRender()
 
   }
-
 
   initialRouteRender() {
     const firstVisit = JSON.parse(localStorage.getItem('firstVisit'))
@@ -62,7 +64,6 @@ export class Router {
   }
 
   draw(key) {
-    
     const body = document.querySelector('body')
     if (document.querySelector('main')) {
       document.querySelector('main').innerHTML = this.routes[key].html;
@@ -80,10 +81,36 @@ export class Router {
     const nav = document.createElement('nav')
     header.appendChild(nav);
     header.innerHTML = headerTemplate()
+
+    const headerContainer = document.querySelectorAll('.header-wrap button')
+
+    headerContainer.forEach(item => item.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('header-icon-trash')) {
+        const path = e.target.getAttribute('data-path')
+        this.navigate(path)
+      } else if (e.target.classList.contains('header-icon-trash')) {
+        e.target.classList.toggle('active')
+        document.querySelector('.delete-mode-up').classList.toggle('active')
+        document.querySelector('.delete-mode').classList.toggle('active')
+        const tasks = document.querySelectorAll('.settings-delete-mode')
+        tasks.forEach(task => task.classList.toggle('active'))
+        const buttons = (document.querySelectorAll('.select,.deselect'))
+        buttons.forEach(button => button.classList.remove('active'))
+        document.querySelector('.header-icon-trash-span').innerHTML = '0'
+        document.querySelectorAll('.settings-delete-mode-confirm').forEach(item => item.className = 'settings-delete-mode-icon')
+      }
+    })
+    )
+
   }
 
-  navigate(path) {
-    history.pushState(null, null, `#${path}`);
-    this.draw(path)
+  navigate(path, param) {
+    if (param) {
+      history.pushState(null, null, `${param}`);
+    } else {
+      history.pushState(null, null, `${path}`);
+    }
+    this.renderComponent(path)
+    // this.draw(path)
   }
 }
