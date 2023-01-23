@@ -9,8 +9,7 @@ class TimerModel {
         this.db = firebaseService.db;
         this.eventBus = eventBus;
     }
-    init() {
-    }
+
     async getData(id){
         const docRef = doc(this.db, "tasks", id);
         const docSnap = await getDoc(docRef);

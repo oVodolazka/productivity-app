@@ -96,7 +96,7 @@ class TasklistController {
     }
 
     timerNavigate(id) {
-        window.router.navigate('/timer',`/timer?id=${id}`)
+        window.router.navigate('/timer',{id})
     }
 }
 

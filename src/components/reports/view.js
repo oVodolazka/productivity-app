@@ -2,9 +2,7 @@ class ReportsView {
     constructor(){
         
     }
-    init() {
-     
-    }
+  
     renderUi(){
         if(document.querySelector('.header-icon-trash')){
             document.querySelector('.header-icon-trash').setAttribute('style','display:none')

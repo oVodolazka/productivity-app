@@ -130,7 +130,6 @@ class TasklistView {
                 if (e.target.parentElement.parentElement.classList.contains('settings__daily-container')) {
                     const id = e.target.parentElement.getAttribute('data-id') 
                     self.eventBus.publish('timer-pressed',id)
-                    //window.router.navigate('/timer')
                 }
             }        
         })
@@ -139,20 +138,7 @@ class TasklistView {
         const buttons = document.querySelector('.header-wrap').querySelectorAll('button')
         buttons.forEach(button => button.classList.remove('active'))
         document.querySelector('.header-icon-list').classList.add('active')
-        // const header = document.querySelector('.header')
-        // header.addEventListener('click', (e) => {
-            // if (e.target.classList.contains('header-icon-trash')) {
-            //     e.target.classList.toggle('active')
-            //     document.querySelector('.delete-mode-up').classList.toggle('active')
-            //     document.querySelector('.delete-mode').classList.toggle('active')
-            //     const tasks = document.querySelectorAll('.settings-delete-mode')
-            //     tasks.forEach(task => task.classList.toggle('active'))
-            //     const buttons = (document.querySelectorAll('.select,.deselect'))
-            //     buttons.forEach(button => button.classList.remove('active'))
-            //     document.querySelector('.header-icon-trash-span').innerHTML = '0'
-            //     document.querySelectorAll('.settings-delete-mode-confirm').forEach(item => item.className = 'settings-delete-mode-icon')
-            // }
-        // })
+       
     }
 
     openGlobalList(data) {

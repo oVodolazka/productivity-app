@@ -23,7 +23,6 @@ class TimerView {
     drawTask(data) {
         document.querySelector('.header__span-title').innerHTML = data.title
         document.querySelector('.header__span-description').innerHTML = data.description
-        console.log(data.estimation)
         const parent = document.querySelector('.modal-estimation')
         for( let i = 0; i < data.estimation; i++){
             createElement('span',parent,['star'],'&#63743')

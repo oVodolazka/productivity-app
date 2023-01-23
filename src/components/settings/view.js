@@ -5,7 +5,6 @@ import eventBus from '../../eventBus';
 
 class SettingsView {
     constructor() {
-        // const self = this;
         this.eventBus = eventBus;
     }
 
@@ -136,8 +135,7 @@ class SettingsView {
     }
 
     drawSettingsData(data) {
-        if (document.querySelector('.header__setting-icon').classList.contains('active')) {
-
+        if (document.querySelector('.header__setting-icon').classList.contains('active') && document.querySelector('.settings__button-pomodoros').classList.contains('active')) {
             document.querySelector('.work-time').innerHTML = data.time
             document.querySelector('.work-iteration').innerHTML = data.iteration
             document.querySelector('.long-break').innerHTML = data.longBreak

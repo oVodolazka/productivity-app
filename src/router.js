@@ -7,6 +7,8 @@ import { SettingsTemplate, SettingsComponent } from './components/settings/index
 import { headerTemplate } from './components/header/index.js'
 import eventBus from './eventBus.js'
 import { WelcomeComponent, WelcomeTemplate } from './components/welcome/index.js'
+import queryString from 'query-string';
+
 
 export class Router {
   constructor() {
@@ -104,13 +106,10 @@ export class Router {
 
   }
 
-  navigate(path, param) {
-    if (param) {
-      history.pushState(null, null, `${param}`);
-    } else {
-      history.pushState(null, null, `${path}`);
-    }
+  navigate(path, param = {}) {
+    const stringified = queryString.stringify(param);
+    const newLink = `${path}?${stringified}`
+    history.pushState(null, null, `${newLink}`);
     this.renderComponent(path)
-    // this.draw(path)
   }
 }

@@ -2,7 +2,6 @@ import firebaseService from "../../services/firebase"
 import { collection, getDocs, doc, addDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore/lite';
 import toastWarning from '../tasklist-add-modal/toastWarning.hbs';
 import eventBus from '../../eventBus';
-import { taskListComponent } from ".";
 import toastAdd from '../tasklist-add-modal/toastAdd.hbs';
 import toastInfo from '../tasklist-add-modal/toastInfo.hbs';
 
