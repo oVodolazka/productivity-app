@@ -1,6 +1,7 @@
 import eventBus from '../../eventBus';
 import { taskListAddModalComponent } from '../tasklist-add-modal';
 
+
 class TasklistController {
     constructor(view, model) {
         this.eventBus = eventBus;
@@ -20,7 +21,7 @@ class TasklistController {
         this.eventBus.subscribe('tasks-selected', id => this.deleteModeTaskSelected(id))
         this.eventBus.subscribe('delete-tasks', data => this.deleteItems(data))
         this.eventBus.subscribe('tasks-deleted', data => this.deleteTasksView(data))
-
+        this.eventBus.subscribe('timer-pressed', (id) => this.timerNavigate(id))
         this.view = view;
         this.model = model;
     }
@@ -92,6 +93,10 @@ class TasklistController {
 
     deleteTasksView(data) {
         this.view.deleteTasks(data)
+    }
+
+    timerNavigate(id) {
+        window.router.navigate('/timer',{id})
     }
 }
 

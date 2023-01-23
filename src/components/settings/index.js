@@ -1,3 +1,16 @@
-import settingsTemplate from './index.hbs'
+import SettingsTemplate from './index.hbs'
 
-export { settingsTemplate } 
+// export { settingsTemplate } 
+import SettingsController from './controller';
+import SettingsModel from './model';
+import SettingsView from './view';
+import firebaseService from '../../services/firebase';
+
+
+const view = new SettingsView();
+const model = new SettingsModel(firebaseService);
+const SettingsComponent = new SettingsController(view, model);
+
+export { SettingsTemplate, SettingsComponent }
+
+
