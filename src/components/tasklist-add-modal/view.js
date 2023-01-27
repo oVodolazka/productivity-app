@@ -38,7 +38,7 @@ class AddTaskModalView {
         modalFader.classList.add('modal-fader')
         main.appendChild(modalFader)
         modalFader.innerHTML = html;
-        const cancelButton = document.querySelector('.modal-button-cancel')        
+        const cancelButton = document.querySelector('.modal-button-cancel')
         cancelButton.addEventListener('click', function () {
             modalFader.remove()
         })
@@ -72,7 +72,6 @@ class AddTaskModalView {
             deadline.value = res.deadline
             const estim = document.querySelector(`.star-${res.estimation}`)
             estim.click()
-
             document.querySelector('.page-heading-modal').innerHTML = 'Edit task';
             const self = this;
             const buttonDone = document.querySelector('.modal-button-done')
@@ -82,9 +81,16 @@ class AddTaskModalView {
                 const estimation = document.querySelector('.star-rating input:checked').value
                 const priorityClass = setPriorityClass(priority)
                 const categoryClass = setCategoryClass(category)
-                self.eventBus.publish('button-done-pressed', { title: title.value, description: description.value, deadline: deadline.value, category, priority, estimation, id: res.id, priorityClass: priorityClass, categoryClass: categoryClass, currDate: defineDay(deadline.value) })
+                let pomodoros = []
+                if(res.estimation !== estimation){
+                    for (let i = 0; i < estimation; i++) {
+                        pomodoros.push('not-started')
+                    }
+                } else{
+                    pomodoros = res.pomodoros
+                }
+                self.eventBus.publish('button-done-pressed', { title: title.value, description: description.value, deadline: deadline.value, category, priority, estimation, id: res.id, priorityClass: priorityClass, categoryClass: categoryClass, currDate: defineDay(deadline.value),pomodoros })
                 modalFader.remove();
-
             })
             const container = document.querySelector('.modal-add')
             container.addEventListener('click', (event) => {
@@ -133,7 +139,11 @@ class AddTaskModalView {
                 const estimationAdd = String(document.querySelector('.star-rating input:checked').value)
                 const priorityClass = setPriorityClass(priority)
                 const categoryClass = setCategoryClass(category)
-                self.eventBus.publish('button-addNewTask-pressed', { title: title.value, description: description.value, deadline: deadline.value, category: category, priority: priority, estimation: estimationAdd, priorityClass: priorityClass, categoryClass: categoryClass })
+                const pomodoros = []
+                for (let i = 0; i < estimationAdd; i++) {
+                    pomodoros.push('not-started')
+                }
+                self.eventBus.publish('button-addNewTask-pressed', { title: title.value, description: description.value, deadline: deadline.value, category: category, priority: priority, estimation: estimationAdd, priorityClass: priorityClass, categoryClass: categoryClass, pomodoros })
                 modalFader.remove();
             })
             new AirDatepicker('.deadline', {
@@ -152,7 +162,7 @@ class AddTaskModalView {
         newTask.innerHTML = newTaskHtml;
         newTask.classList.add(data.class)
 
-        if(document.querySelector('.header-icon-trash').classList.contains('active')){
+        if (document.querySelector('.header-icon-trash').classList.contains('active')) {
             newTask.querySelector('.settings-delete-mode').classList.add('active')
         }
     }
@@ -181,7 +191,7 @@ class AddTaskModalView {
             const deleteIcon = parent.querySelector('.settings-delete-mode')
             deleteIcon.className = `settings-delete-mode settings-delete-mode--${data.category.toUpperCase()}`
 
-            if(document.querySelector('.header-icon-trash').classList.contains('active')){
+            if (document.querySelector('.header-icon-trash').classList.contains('active')) {
                 deleteIcon.classList.add('active')
             }
         }
@@ -204,24 +214,22 @@ class AddTaskModalView {
     showToast(type) {
         let classes;
         let html;
-        if(type === 'warning'){
+        if (type === 'warning') {
             classes = ['footer__warning-notification', 'footer__warning-notification--blue'];
             html = toastInfo()
         }
-        if(type === 'error'){
+        if (type === 'error') {
             classes = ['footer__warning-notification', 'footer__warning-notification--red'];
             html = toastWarning()
         }
-        if(type == 'add'){
-            html =  toastAdd()
+        if (type == 'add') {
+            html = toastAdd()
             classes = ['footer__warning-notification', 'footer__warning-notification--green']
         }
-        if(type == 'delete'){
+        if (type == 'delete') {
             html = toastInfo();
             classes = ['footer__warning-notification', 'footer__warning-notification--blue']
         }
-
-        // html: toastInfo(), classes: ['footer__warning-notification', 'footer__warning-notification--blue'] 
         const footer = document.querySelector('.footer__button-wrap')
         const htmlToast = html;
         const wrapper = createElement('div', footer, classes, htmlToast, [{ 'style': 'position: absolute; right: 7.4%;' }])

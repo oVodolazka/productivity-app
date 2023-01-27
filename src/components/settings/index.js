@@ -1,6 +1,4 @@
 import SettingsTemplate from './index.hbs'
-
-// export { settingsTemplate } 
 import SettingsController from './controller';
 import SettingsModel from './model';
 import SettingsView from './view';

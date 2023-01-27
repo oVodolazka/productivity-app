@@ -71,7 +71,7 @@ body {
         width: 100%;
     }
     &__button-pomodoros,
-    &__button-categories {
+    &__button-categories, &__button-done, &__button-todo{
         padding-right: 7px;
         margin: 0;
         width: fit-content;
@@ -84,14 +84,15 @@ body {
         }
     }
     &__button__wrap{
-        position: absolute;
-        right: 7%;
         &-cat{
             position: absolute;
             right: 7%;
-            top: 213px;
+            &2{
+                position: absolute;
+                right: 7%;
+                top: 213px;
+            }
         }
-        
     }
     &__heading {
         width: 100%;
@@ -110,16 +111,13 @@ body {
         width: 100%;
     }
     &__button__wrap-up {
-        position: relative;
+        position: absolute;
         right: 7%;
     }
 
     &-span {
         font-size: 20px;
         color: #879bab;
-        // position: absolute;
-        // left: 50%;
-        // transform: translate(-50%);
     }
     &-span-pom{
         font-size: 20px;
@@ -175,7 +173,6 @@ body {
         width: 100%;
         height: 91px;
         position: relative;
-        //margin-bottom: 20px;
         &::before {
             display: block;
             content: "";
@@ -252,7 +249,6 @@ body {
 
         &-day {
             width: 91px;
-            //    height: 100%;
             color: #9da2a7;
             font-size: 11px;
             font-weight: bold;
@@ -325,10 +321,24 @@ body {
             background-image: url("@{img-path}/pencil-icon-white.svg");
             background-size: 25px;
             background-color: white;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; 
         }
         &:hover .settings__move, &:hover .settings__daily-button{
             display:block;
+        }
+        &:hover:after {
+            position: absolute;
+            font-weight: bold;
+            line-height: 20px;
+            top: 65px;
+            right: -30px;
+            display: block;
+            content: "Start Task";
+            width: 100px;
+            height: 20px;
+            font-size: 13px;
+            color: #7e858d;
+            z-index: 9999;
         }
     }
 
@@ -515,9 +525,9 @@ body {
     }
  
     &-estimation {
+        justify-content: flex-start;
         display: flex;
         flex-flow: row;
-        justify-content: center;
     }
    
     &-estimation input {
@@ -610,6 +620,7 @@ body {
         background: transparent;
         border: none;
         color: #879bab;
+        display: none;
     }
 
     &-timer__left-button {
@@ -652,6 +663,7 @@ body {
     }
 
     &-timer {
+        flex-flow: column;
         color: white;
         display: flex;
         align-items: center;
@@ -670,6 +682,20 @@ body {
         color: white;
         font-weight: bold;
         background-color: #57ba9d;
+    }
+    &-span-min{
+        font-size: 12px;
+    }
+    &-timer-button{
+        border:none;
+        background: transparent;
+        color: #879bab;
+        font-size: 26px;
+    }
+    &__progress{
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
     }
 }
 .review-rating {
@@ -914,8 +940,6 @@ body {
         }
     }
     &__warning-notification {
-        // position: absolute;
-        // bottom: 0px;
         display: flex;
         justify-content: space-between;
         border: 0.8px solid white;
@@ -1208,8 +1232,8 @@ h2 {
   color: #f3b63f;
 }
 
-.star{
-    color: #f7dd60;
+.star-timer{
+    color: #969696;
     height: 1em;
     width: 1em;
     font-size: 28px;
@@ -1217,6 +1241,12 @@ h2 {
     padding: 0;
     border: none;
     -webkit-text-stroke: 2px #8A7500;
+    &.finished{
+        color: #f7dd60;
+    }
+    &.failed{
+        color: #dd7960;
+    }
 }
 
 .category-span{
@@ -1403,4 +1433,13 @@ h2 {
         justify-content: center;
     }
 }
+
+.timer {
+    margin: 20px;
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 58px;
+    left: 700px;
+  }
 

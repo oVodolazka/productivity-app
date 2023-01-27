@@ -28,7 +28,7 @@ class TasklistController {
 
     init() {
         this.model.getData()
-        this.view.initEventListeners()
+        this.view.initEventListeners() 
     }
 
     onTaskDataLoaded(data) {

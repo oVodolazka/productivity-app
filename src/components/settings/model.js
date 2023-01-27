@@ -1,15 +1,11 @@
 import firebaseService from "../../services/firebase"
-import { collection, getDocs, doc, addDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore/lite';
+import { doc, updateDoc, getDoc } from 'firebase/firestore/lite';
 import eventBus from '../../eventBus';
 
 class SettingsModel {
     constructor(){
         this.db = firebaseService.db
         this.eventBus = eventBus
-    }
-
-    init() {
-       
     }
 
     async getSettingsValue() {
@@ -33,7 +29,6 @@ class SettingsModel {
                 shortBreak: data.shortBreak,
                 longBreak: data.longBreak,
             });
-            //this.eventBus.publish()
         }
         catch (e) {
             console.log(e)

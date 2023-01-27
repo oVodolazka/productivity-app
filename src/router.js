@@ -1,5 +1,3 @@
-// const renderTemplate = template => console.log('render template', template)
-
 import { ReportsTemplate, ReportsComponent } from './components/reports/index.js'
 import { taskListTemplate, taskListComponent } from './components/taskList/index.js'
 import { TimerTemplate, TimerComponent } from './components/timer/index.js'
@@ -62,6 +60,9 @@ export class Router {
 
   renderComponent(key) {
     this.draw(key)
+    if (key == '/timer') {
+      this.routes[key].component.onUnmount()
+    }
     this.routes[key].component.init()
   }
 
@@ -103,10 +104,12 @@ export class Router {
       }
     })
     )
-
   }
 
   navigate(path, param = {}) {
+    if (window.location.pathname == '/timer') {
+      this.routes['/timer'].component.clearTimerInterval()
+    }
     const stringified = queryString.stringify(param);
     const newLink = `${path}?${stringified}`
     history.pushState(null, null, `${newLink}`);
