@@ -45,23 +45,23 @@ class TasklistView {
                 e.target.classList.add('active')
                 self.eventBus.publish('filter-pressed')
             }
-            if (e.target.classList.contains('settings__button-categories')) {
+            if (e.target.classList.contains('settings__button-done')) {
                 const deselect = document.querySelectorAll('.deselect')
                 deselect.forEach(item => item.classList.remove('active'))
 
-                document.querySelector('.settings__button-pomodoros').classList.remove('active')
-                document.querySelector('.settings__button-categories').classList.add('active')
+                document.querySelector('.settings__button-todo').classList.remove('active')
+                document.querySelector('.settings__button-done').classList.add('active')
                 self.eventBus.publish('done-pressed', true)
 
                 if (document.querySelector('.footer__global-btn').classList.contains('active')) {
                     self.eventBus.publish('done-pressed-upd-global')
                 }
             }
-            if (e.target.classList.contains('settings__button-pomodoros')) {
+            if (e.target.classList.contains('settings__button-todo')) {
                 const deselect = document.querySelectorAll('.deselect')
                 deselect.forEach(item => item.classList.remove('active'))
-                document.querySelector('.settings__button-pomodoros').classList.add('active')
-                document.querySelector('.settings__button-categories').classList.remove('active')
+                document.querySelector('.settings__button-todo').classList.add('active')
+                document.querySelector('.settings__button-done').classList.remove('active')
                 self.eventBus.publish('done-pressed')
                 if (document.querySelector('.footer__global-btn').classList.contains('active')) {
                     self.eventBus.publish('done-pressed-upd-global')
@@ -127,18 +127,16 @@ class TasklistView {
                 e.target.classList.toggle('active')
             }
             if (e.target.classList.contains('settings__daily-icon')) {
-                if (e.target.parentElement.parentElement.classList.contains('settings__daily-container')) {
-                    const id = e.target.parentElement.getAttribute('data-id') 
-                    self.eventBus.publish('timer-pressed',id)
+                if (document.querySelector('.settings__button-todo').classList.contains('active')) {
+                    const id = e.target.parentElement.getAttribute('data-id')
+                    self.eventBus.publish('timer-pressed', id)
                 }
-            }        
+            }
         })
-
-        document.querySelector('.header-icon-trash').setAttribute('style','display:block')
+        document.querySelector('.header-icon-trash').setAttribute('style', 'display:block')
         const buttons = document.querySelector('.header-wrap').querySelectorAll('button')
         buttons.forEach(button => button.classList.remove('active'))
         document.querySelector('.header-icon-list').classList.add('active')
-       
     }
 
     openGlobalList(data) {
@@ -190,7 +188,6 @@ class TasklistView {
         })
         const html = getTasklistHtml({ result });
         const dataWrapper = document.querySelector('.settings__daily-container')
-        //dataWrapper.innerHTML = '';
         dataWrapper.innerHTML = html;
         if (document.querySelector('.header-icon-trash').classList.contains('active')) {
             const parent = document.querySelector('.settings__daily-container')
@@ -268,6 +265,8 @@ class TasklistView {
                 parent.querySelector('.settings-delete-mode-icon').className = 'settings-delete-mode-confirm'
             }
         }
+
+
     }
 
     updateGlobal(data) {
@@ -299,6 +298,7 @@ class TasklistView {
         if (!item.querySelector('div')) {
             item.remove()
         }
+
 
     }
     updateGlobalFiltering(data) {
@@ -414,6 +414,10 @@ class TasklistView {
     updateCounter() {
         const tasks = document.querySelectorAll('.settings-delete-mode-confirm')
         document.querySelector('.header-icon-trash-span').innerHTML = tasks.length
+    }
+    checkTasks() {
+        if (document.querySelector('.settings__daily-container').innerHTML) {
+        }
     }
 }
 

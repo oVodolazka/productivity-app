@@ -1,20 +1,17 @@
 import firebaseService from "../../services/firebase"
-import { collection, getDocs, doc, addDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore/lite';
+import { doc, updateDoc, getDoc } from 'firebase/firestore/lite';
 import eventBus from '../../eventBus';
 
 class SettingsModel {
     constructor(){
         this.db = firebaseService.db
         this.eventBus = eventBus
-    }
-
-    init() {
-       
+        this.settingsId = 'T5Udpi4wuKFKlJwjkOCH'
     }
 
     async getSettingsValue() {
         try {
-            const docRef = doc(this.db, 'settings', 'T5Udpi4wuKFKlJwjkOCH');
+            const docRef = doc(this.db, 'settings', this.settingsId);
             const docSnap = await getDoc(docRef);
             this.eventBus.publish('settings-data-loaded',docSnap.data())
         }
@@ -26,14 +23,13 @@ class SettingsModel {
 
     async updateSettingsData(data) {
         try {
-            const docRef = doc(firebaseService.db, 'settings', 'T5Udpi4wuKFKlJwjkOCH');
+            const docRef = doc(firebaseService.db, 'settings', this.settingsId);
             await updateDoc(docRef, {
                 time: data.time,
                 iteration: data.iteration,
                 shortBreak: data.shortBreak,
                 longBreak: data.longBreak,
             });
-            //this.eventBus.publish()
         }
         catch (e) {
             console.log(e)

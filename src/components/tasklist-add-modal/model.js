@@ -35,6 +35,7 @@ class addModalModel {
                 priorityClass: data.priorityClass,
                 categoryClass: data.categoryClass,
                 currDate: data.currDate,
+                pomodoros: data.pomodoros
             });
             this.eventBus.publish('on-task-data-updated', { data, type: 'warning' })
         }
@@ -60,7 +61,8 @@ class addModalModel {
                 priorityClass: data.priorityClass,
                 categoryClass: data.categoryClass,
                 list: true,
-                completed: false
+                completed: false,
+                pomodoros: data.pomodoros
             })
             const id = snapshot.id;
             const list = await this.getDocument(id)
