@@ -3,13 +3,13 @@ import eventBus from '../../eventBus';
 import queryString from 'query-string';
 import { createElement } from '../../utils/common';
 import ProgressBar from 'progressbar.js'
-let intervalId;
 
 class TimerView {
     constructor() {
         this.eventBus = eventBus;
         this.bindedonContainerClick = this.onContainerClick.bind(this)
         this.self = this;
+        this.intervalId;
 
     }
     initEventListeners() {
@@ -48,7 +48,7 @@ class TimerView {
                 if (document.querySelector('.timer').querySelector('svg')) {
                     document.querySelector('.timer').querySelector('svg').remove()
                 }
-                clearInterval(intervalId)
+                clearInterval(this.intervalId)
             }
         }
         else if (event.target.classList.contains('modal__button-finish')) {
@@ -73,7 +73,7 @@ class TimerView {
                 if (document.querySelector('.timer').querySelector('svg')) {
                     document.querySelector('.timer').querySelector('svg').remove()
                 }
-                clearInterval(intervalId)
+                clearInterval(this.intervalId)
             }
         }
         else if (event.target.classList.contains('modal-timer__left-button')) {
@@ -107,7 +107,7 @@ class TimerView {
             if (document.querySelector('.timer').querySelector('svg')) {
                 document.querySelector('.timer').querySelector('svg').remove()
             }
-            clearInterval(intervalId)
+            clearInterval(this.intervalId)
         }
     }
 
@@ -126,14 +126,16 @@ class TimerView {
             buttons.forEach(button => button.classList.remove('active'))
         }
     }
-    
+
     drawTask(data) {
         document.querySelector('.header__span-title').innerHTML = data.title
         document.querySelector('.header__span-description').innerHTML = data.description
         const parent = document.querySelector('.modal-estimation')
-        for (let i = 0; i < data.pomodoros.length; i++) {
-            createElement('span', parent, ['star-timer', `${data.pomodoros[i]}`], '&#63743', [{ 'data-id': i }])
-        }
+        // for (let i = 0; i < data.pomodoros.length; i++) {
+        //     createElement('span', parent, ['star-timer', `${data.pomodoros[i]}`], '&#63743', [{ 'data-id': i }])
+        // }
+
+        data.pomodoros.forEach((item,index) =>  createElement('span', parent, ['star-timer', `${data.pomodoros[index]}`], '&#63743', [{ 'data-id': index }]))
 
         const stars = document.querySelector('.star-timer.not-started')
         if (!stars) {
@@ -142,25 +144,25 @@ class TimerView {
             document.querySelector('.modal__button-start').remove()
             document.querySelector('.modal-timer__left-button').setAttribute('style', 'display: block')
             document.querySelector('.modal-timer__right-button').setAttribute('style', 'display: block')
-            clearInterval(intervalId)
+            clearInterval(this.intervalId)
         }
     }
 
     renderTimer(data) {
 
-        clearInterval(intervalId)
+        clearInterval(this.intervalId)
         let minutesToSeconds = data.time * 60
-        intervalId = setInterval(() => {
+        this.intervalId = setInterval(() => {
             let countdownNumberEl = document.querySelector('.modal-span')
             data.time = --data.time;
             countdownNumberEl.textContent = `${data.time}`;
             if (data.time == 0) {
-                clearInterval(intervalId)
+                clearInterval(this.intervalId)
                 document.querySelector('.modal-span').innerHTML = 'Timer is over'
                 document.querySelector('.modal-span-min').innerHTML = ''
                 document.querySelector('.modal-span').setAttribute('style', 'font-size:14px')
             }
-        }, 600)
+        }, 60000)
 
         if (document.querySelector('.timer').querySelector('svg')) {
             document.querySelector('.timer').querySelector('svg').remove()
@@ -213,13 +215,13 @@ class TimerView {
         const buttonWrap = document.querySelector('.modal__button-wrap')
         createElement('button', buttonWrap, ['modal__button-start-task'], 'Start Pomodora')
         createElement('button', buttonWrap, ['modal__button-finish-task'], 'Finish Task')
-        clearInterval(intervalId)
-        intervalId = setInterval(() => {
+        clearInterval(this.intervalId)
+        this.intervalId = setInterval(() => {
             let countdownNumberEl = document.querySelector('.modal-span')
             data.shortBreak = --data.shortBreak;
             countdownNumberEl.textContent = `${data.shortBreak}`;
             if (data.shortBreak == 0) {
-                clearInterval(intervalId)
+                clearInterval(this.intervalId)
                 document.querySelector('.modal-span').innerHTML = 'Break is over'
                 document.querySelector('.modal-span').setAttribute('style', 'font-size:14px')
                 document.querySelector('.modal-span-min').innerHTML = ''
@@ -238,7 +240,7 @@ class TimerView {
         bar.animate(1.0);
     }
     removeTimer() {
-        clearInterval(intervalId)
+        clearInterval(this.intervalId)
     }
 }
 

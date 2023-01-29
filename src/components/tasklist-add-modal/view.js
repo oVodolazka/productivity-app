@@ -81,11 +81,9 @@ class AddTaskModalView {
                 const estimation = document.querySelector('.star-rating input:checked').value
                 const priorityClass = setPriorityClass(priority)
                 const categoryClass = setCategoryClass(category)
-                let pomodoros = []
+                let pomodoros;
                 if(res.estimation !== estimation){
-                    for (let i = 0; i < estimation; i++) {
-                        pomodoros.push('not-started')
-                    }
+                    pomodoros = new Array(Number(estimation)).fill('not-started')    
                 } else{
                     pomodoros = res.pomodoros
                 }
@@ -143,7 +141,7 @@ class AddTaskModalView {
                 for (let i = 0; i < estimationAdd; i++) {
                     pomodoros.push('not-started')
                 }
-                self.eventBus.publish('button-addNewTask-pressed', { title: title.value, description: description.value, deadline: deadline.value, category: category, priority: priority, estimation: estimationAdd, priorityClass: priorityClass, categoryClass: categoryClass, pomodoros })
+                self.eventBus.publish('button-addNewTask-pressed', { title: title.value, description: description.value, deadline: deadline.value, category, priority, estimation: estimationAdd, priorityClass: priorityClass, categoryClass: categoryClass, pomodoros })
                 modalFader.remove();
             })
             new AirDatepicker('.deadline', {

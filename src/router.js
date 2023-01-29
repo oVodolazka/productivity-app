@@ -41,7 +41,6 @@ export class Router {
     this.defaultRoute = '/task-list';
     this.headerDraw()
     this.initialRouteRender()
-
   }
 
   initialRouteRender() {
@@ -60,9 +59,6 @@ export class Router {
 
   renderComponent(key) {
     this.draw(key)
-    if (key == '/timer') {
-      this.routes[key].component.onUnmount()
-    }
     this.routes[key].component.init()
   }
 
@@ -107,8 +103,8 @@ export class Router {
   }
 
   navigate(path, param = {}) {
-    if (window.location.pathname == '/timer') {
-      this.routes['/timer'].component.clearTimerInterval()
+    if (window.location.pathname == '/timer' & path !== '/timer') {
+      this.routes['/timer'].component.onUnmount()
     }
     const stringified = queryString.stringify(param);
     const newLink = `${path}?${stringified}`

@@ -22,10 +22,11 @@ class TimerController {
     }
     onUnmount(){
         this.view.removeEventListeners()
-    }
-    clearTimerInterval(){
         this.view.removeTimer()
     }
+    // clearTimerInterval(){
+       
+    // }
     getTask(id){
         this.model.getData(id)
     }

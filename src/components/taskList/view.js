@@ -127,11 +127,9 @@ class TasklistView {
                 e.target.classList.toggle('active')
             }
             if (e.target.classList.contains('settings__daily-icon')) {
-                if (e.target.parentElement.parentElement.classList.contains('settings__daily-container')) {
-                    if (document.querySelector('.settings__button-todo').classList.contains('active')) {
-                        const id = e.target.parentElement.getAttribute('data-id')
-                        self.eventBus.publish('timer-pressed', id)
-                    }
+                if (document.querySelector('.settings__button-todo').classList.contains('active')) {
+                    const id = e.target.parentElement.getAttribute('data-id')
+                    self.eventBus.publish('timer-pressed', id)
                 }
             }
         })
@@ -171,7 +169,7 @@ class TasklistView {
                     tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
                 }
             }
-            this.updateCounter()            
+            this.updateCounter()
         } else {
             dataWrapper.innerHTML = ''
             const globalList = document.querySelector('.footer__global-btn')
@@ -267,7 +265,7 @@ class TasklistView {
                 parent.querySelector('.settings-delete-mode-icon').className = 'settings-delete-mode-confirm'
             }
         }
-      
+
 
     }
 
