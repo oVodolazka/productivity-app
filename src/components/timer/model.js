@@ -8,6 +8,7 @@ class TimerModel {
     constructor() {
         this.db = firebaseService.db;
         this.eventBus = eventBus;
+        this.settingsId = 'T5Udpi4wuKFKlJwjkOCH'
     }
 
     async getData(id) {
@@ -18,7 +19,7 @@ class TimerModel {
 
     async getSettings() {
         try {
-            const docRef = doc(this.db, 'settings', 'T5Udpi4wuKFKlJwjkOCH');
+            const docRef = doc(this.db, 'settings', this.settingsId);
             const docSnap = await getDoc(docRef);
             this.eventBus.publish('settings-data-ready', docSnap.data())
         }
@@ -27,7 +28,7 @@ class TimerModel {
             //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
         }
     }
-    async updateTask(data){
+    async updateTask(data) {
         try {
             const classes = await this.getDataTimer(data.id)
             classes.pomodoros[data.pomodorosId] = data.class
@@ -46,9 +47,9 @@ class TimerModel {
         const docSnap = await getDoc(docRef);
         return docSnap.data()
     }
-    async getShortBreakSettings(){
+    async getShortBreakSettings() {
         try {
-            const docRef = doc(this.db, 'settings', 'T5Udpi4wuKFKlJwjkOCH');
+            const docRef = doc(this.db, 'settings', this.settingsId);
             const docSnap = await getDoc(docRef);
             this.eventBus.publish('settings-break-ready', docSnap.data())
         }
@@ -57,17 +58,27 @@ class TimerModel {
             //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
         }
     }
-    async updateTaskStatus(id){
+    async updateTaskStatus(data) {
         try {
-            const docRef = doc(firebaseService.db, 'tasks', id);
+            const docRef = doc(firebaseService.db, 'tasks', data.id);
             await updateDoc(docRef, {
                 completed: true,
+                finishDate: data.finishDate,
+                task: data.task,
             });
         }
         catch (e) {
             console.log(e)
             //this.eventBus.publish('error-catched', { type: 'error' })
         }
+    }
+
+    async updatePomodoro(data) {
+        const docRef = doc(firebaseService.db, 'tasks', data.id);
+        await updateDoc(docRef, {
+            pomodoros: data.pomodoros,
+            estimation: data.pomodoros.length  
+        });
     }
 }
 export default TimerModel

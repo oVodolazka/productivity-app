@@ -19,5 +19,3 @@ function scrollDebounce() {
 const debounce = _.debounce(scrollDebounce, 50);
 
 window.addEventListener('scroll', debounce);
-
-

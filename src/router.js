@@ -100,14 +100,20 @@ export class Router {
       }
     })
     )
+    const headerBtn = document.querySelector('.header__img')
+    headerBtn.addEventListener('click', () => window.router.navigate('/task-list'))
   }
 
   navigate(path, param = {}) {
-    if (window.location.pathname == '/timer' & path !== '/timer') {
-      this.routes['/timer'].component.onUnmount()
+    const currentPath = window.location.pathname === '/' ? this.defaultRoute : window.location.pathname;
+    if (this.routes[currentPath].component.onUnmount && path !== currentPath) {
+      this.routes[currentPath].component.onUnmount();
     }
     const stringified = queryString.stringify(param);
-    const newLink = `${path}?${stringified}`
+    let newLink = `${path}`
+    if(stringified){
+      newLink = `${path}?${stringified}`
+    }
     history.pushState(null, null, `${newLink}`);
     this.renderComponent(path)
   }
