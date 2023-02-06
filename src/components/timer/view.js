@@ -11,7 +11,7 @@ class TimerView {
         this.bindedonContainerClick = this.onContainerClick.bind(this)
         this.self = this;
         this.intervalId;
-        this.task;
+        this.task = '';
     }
     initEventListeners() {
         const container = document.querySelector('.timer-container')
@@ -43,12 +43,9 @@ class TimerView {
             document.querySelector('.star-timer.not-started').className = 'star-timer failed'
             document.querySelector('.modal__button-fail').remove()
             document.querySelector('.modal__button-finish').remove()
-            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length) {
+            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
                 this.task =  'successful'
-            } else if (document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length){
-                this.task =  'successful'
-            }
-            else {
+            } else {
                 this.task =  'failed'
             }
             if (document.querySelector('.star-timer.not-started')) {
@@ -76,11 +73,9 @@ class TimerView {
             document.querySelector('.star-timer.not-started').className = 'star-timer finished'
             document.querySelector('.modal__button-fail').remove()
             document.querySelector('.modal__button-finish').remove()
-            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length) {
+            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
                 this.task =  'successful'
-            } else if (document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length){
-                this.task =  'successful'
-            }
+            } 
             else {
                 this.task =  'failed'
             }
@@ -118,12 +113,9 @@ class TimerView {
         }
         else if (event.target.classList.contains('modal__button-finish-task')) {
             const parsed = queryString.parse(location.search);
-            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length) {
+            if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
                 this.task =  'successful'
-            } else if (document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length){
-                this.task =  'successful'
-            }
-            else {
+            } else {
                 this.task =  'failed'
             }
             this.eventBus.publish('task-completed-pressed', { task:this.task, id: parsed.id, finishDate: getDay() })

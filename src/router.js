@@ -110,7 +110,7 @@ export class Router {
       this.routes[currentPath].component.onUnmount();
     }
     const stringified = queryString.stringify(param);
-    let newLink = `${path}`
+    let newLink = path
     if(stringified){
       newLink = `${path}?${stringified}`
     }
