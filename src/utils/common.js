@@ -22,14 +22,15 @@ export const defineDay = (date) => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
     today = dd + '.' + mm + '.' + yyyy;
+    let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+    const ddYes = String(yesterday.getDate()).padStart(2, '0');
+    const mmYes = String(yesterday.getMonth() + 1).padStart(2, '0');
+    yesterday = ddYes + '.' + mmYes + '.' + yyyy;
 
-    let tomorrow = new Date();
-    const ddTom = tomorrow.getDate() + 1;
-    tomorrow = String(ddTom) + '.' + mm.padStart(2, '0') + '.' + yyyy;
-
-    let yesterday = new Date();
-    const ddYes = yesterday.getDate() - 1;
-    yesterday = String(ddYes) + '.' + mm.padStart(2, '0') + '.' + yyyy;
+    let tomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
+    const ddTom = String(tomorrow.getDate()).padStart(2, '0');
+    const mmTom = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    tomorrow = ddTom + '.' + mmTom + '.' + yyyy;
 
     if (date == today) {
         return 'Today'
@@ -66,4 +67,3 @@ export const getDay = () => {
     const yyyy = getDay.getFullYear();
     return getDay = dd + '.' + mm + '.' + yyyy;
 }
-

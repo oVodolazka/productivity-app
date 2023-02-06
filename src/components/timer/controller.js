@@ -13,7 +13,8 @@ class TimerController {
         this.eventBus.subscribe('finish-pomodoros-pressed',(data) => this.finishPomodoros(data))
         this.eventBus.subscribe('get-settings', () => this.getSettings())
         this.eventBus.subscribe('settings-break-ready',data => this.renderBreak(data))
-        this.eventBus.subscribe('task-completed-pressed',id => this.completeTask(id))
+        this.eventBus.subscribe('task-completed-pressed',data => this.completeTask(data))
+        this.eventBus.subscribe('add-pomodoros-pressed', data => this.addPomodoros(data))
     }
 
     init() {
@@ -24,9 +25,6 @@ class TimerController {
         this.view.removeEventListeners()
         this.view.removeTimer()
     }
-    // clearTimerInterval(){
-       
-    // }
     getTask(id){
         this.model.getData(id)
     }
@@ -51,8 +49,11 @@ class TimerController {
     renderBreak(data){
         this.view.drawbreak(data)
     }
-    completeTask(id){
-        this.model.updateTaskStatus(id)
+    completeTask(data){
+        this.model.updateTaskStatus(data)
+    }
+    addPomodoros(data){
+        this.model.updatePomodoro(data)
     }
 }
 

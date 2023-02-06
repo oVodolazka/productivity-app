@@ -1,6 +1,5 @@
 import ReportsTemplate from './index.hbs'
-
-
+import './less/reports.less';
 import ReportsController from './controller';
 import ReportsModel from './model';
 import ReportsView from './view';

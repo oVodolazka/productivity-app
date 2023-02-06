@@ -1,74 +1,76 @@
-<div class="settings">
-    <span class="settings page-heading"> Settings</span>
-    <div class="settings__main-wrap">
-        <span class="settings-span-pom">Pomodoros settings</span>
-        <div class="settings__button__wrap-cat">
-            <button class="settings__button-pomodoros active">Pomodoros</button>
-            <span class="settings__button__span-divide">|</span>
-            <button class="settings__button-categories">Categories</button>
-        </div>
-    </div>
-    <div class="settings__data__wrapper">
-        <div class="settings__data settings__data--yellow">
-            <div class="settings__data-item">
-                <span class="settings__data-item-span ">WORK TIME</span>
-                <div class="settings__data__button-wrapper">
-                    <button data-min="15" data-value="-5" class="settings__button-minus">-</button>
-                    <span class="settings__button__span work-time"></span>
-                    <button data-max="25" data-value="+5" class="settings__button-plus disabled">+</button>
-                </div>
+<div class="settings_container">
+    <div class="settings">
+        <span class="settings page-heading"> Settings</span>
+        <div class="settings__main-wrap">
+            <span class="settings-span-pom">Pomodoros settings</span>
+            <div class="settings__button__wrap-cat">
+                <button class="settings__button-pomodoros active">Pomodoros</button>
+                <span class="settings__button__span-divide">|</span>
+                <button class="settings__button-categories">Categories</button>
             </div>
-            <span class="settings__data-item-description">Please select a value between 15 and 25 </span>
-            <span>minutes</span>
         </div>
-        <div class="settings__data settings__data--blue">
-            <div class="settings__data-item">
-                <span class="settings__data-item-span ">WORK ITERATION</span>
-                <div class="settings__data__button-wrapper">
-                    <button data-min="2" data-value="-1" class="settings__button-minus">-</button>
-                    <span class="settings__button__span work-iteration"></span>
-                    <button data-max="5" data-value="+1" class="settings__button-plus disabled">+</button>
+        <div class="settings__data__wrapper">
+            <div class="settings__data settings__data--yellow">
+                <div class="settings__data-item">
+                    <span class="settings__data-item-span ">WORK TIME</span>
+                    <div class="settings__data__button-wrapper">
+                        <button data-min="15" data-value="-5" class="settings__button-minus">-</button>
+                        <span class="settings__button__span work-time"></span>
+                        <button data-max="25" data-value="+5" class="settings__button-plus disabled">+</button>
+                    </div>
                 </div>
+                <span class="settings__data-item-description">Please select a value between 15 and 25 </span>
+                <span>minutes</span>
             </div>
-            <span class="settings__data-item-description">Please select a value between 2 and 5
-            </span><span>iterations</span>
-        </div>
-        <div class="settings__data settings__data--darkblue">
-            <div class="settings__data-item">
-                <span class="settings__data-item-span">SHORT BREAK</span>
-                <div class="settings__data__button-wrapper">
-                    <button data-min="3" data-value="-1" class="settings__button-minus">-</button>
-                    <span class="settings__button__span short-break"></span>
-                    <button data-max="5" data-value="+1" class="settings__button-plus  disabled">+</button>
+            <div class="settings__data settings__data--blue">
+                <div class="settings__data-item">
+                    <span class="settings__data-item-span ">WORK ITERATION</span>
+                    <div class="settings__data__button-wrapper">
+                        <button data-min="2" data-value="-1" class="settings__button-minus">-</button>
+                        <span class="settings__button__span work-iteration"></span>
+                        <button data-max="5" data-value="+1" class="settings__button-plus disabled">+</button>
+                    </div>
                 </div>
+                <span class="settings__data-item-description">Please select a value between 2 and 5
+                </span><span>iterations</span>
             </div>
-            <span class="settings__data-item-description">Please select a value between 3 and 5
-            </span><span>minutes</span>
-        </div>
-        <div class="settings__data settings__data--violet">
-            <div class="settings__data-item">
-                <span class="settings__data-item-span ">LONG BREAK</span>
-                <div class="settings__data__button-wrapper">
-                    <button data-min="15" data-value="-5" class="settings__button-minus ">-</button>
-                    <span class="settings__button__span long-break"></span>
-                    <button data-max="30" data-value="+5" class="settings__button-plus disabled">+</button>
+            <div class="settings__data settings__data--darkblue">
+                <div class="settings__data-item">
+                    <span class="settings__data-item-span">SHORT BREAK</span>
+                    <div class="settings__data__button-wrapper">
+                        <button data-min="3" data-value="-1" class="settings__button-minus">-</button>
+                        <span class="settings__button__span short-break"></span>
+                        <button data-max="5" data-value="+1" class="settings__button-plus  disabled">+</button>
+                    </div>
                 </div>
+                <span class="settings__data-item-description">Please select a value between 3 and 5
+                </span><span>minutes</span>
             </div>
-            <span class="settings__data-item-description">Please select a value between 15 and 30
-            </span><span>minutes</span>
+            <div class="settings__data settings__data--violet">
+                <div class="settings__data-item">
+                    <span class="settings__data-item-span ">LONG BREAK</span>
+                    <div class="settings__data__button-wrapper">
+                        <button data-min="15" data-value="-5" class="settings__button-minus ">-</button>
+                        <span class="settings__button__span long-break"></span>
+                        <button data-max="30" data-value="+5" class="settings__button-plus disabled">+</button>
+                    </div>
+                </div>
+                <span class="settings__data-item-description">Please select a value between 15 and 30
+                </span><span>minutes</span>
+            </div>
         </div>
-    </div>
-    <div class="footer">
-        <span class="footer__span">Your cycle</span>
-        <div class="footer-top"><span class="footer-top-left">0m</span><span style="left:53.6875%"
-                class="footer-top-center">First cycle: 2h55m</span><span class="footer-top-right">5h20m</span></div>
-        <div class="footer__cycle-wrapper">
-        </div>
-        <div class="footer-bottom">
-        </div>
-        <div class="footer__button-wrapper">
-            <button class="footer__button-task">Go To Task</button>
-            <button class="footer__button-save">Save</button>
+        <div class="footer">
+            <span class="footer__span">Your cycle</span>
+            <div class="footer-top"><span class="footer-top-left">0m</span><span style="left:53.6875%"
+                    class="footer-top-center">First cycle: 2h55m</span><span class="footer-top-right">5h20m</span></div>
+            <div class="footer__cycle-wrapper">
+            </div>
+            <div class="footer-bottom">
+            </div>
+            <div class="footer__button-wrapper">
+                <button class="footer__button-task">Go To Task</button>
+                <button class="footer__button-save">Save</button>
+            </div>
         </div>
     </div>
 </div>

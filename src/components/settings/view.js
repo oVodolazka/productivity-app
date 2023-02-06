@@ -9,7 +9,7 @@ class SettingsView {
     }
 
     initEventListeners() {
-        const container = document.querySelector('main')
+        const container = document.querySelector('.settings_container')
         container.addEventListener('click', (e) => {
             if (e.target.classList.contains('settings__button-categories')) {
                 container.innerHTML = settingsCategoriesTemplate()
