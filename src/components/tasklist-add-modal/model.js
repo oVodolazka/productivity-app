@@ -3,10 +3,6 @@ import eventBus from '../../eventBus';
 import { collection, getDocs, doc, addDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore/lite';
 import { defineDay } from '../../utils/common'
 import { getDay } from '../../utils/common'
-import { createElement } from '../../utils/common'
-import toastWarning from '../tasklist-add-modal/toastWarning.hbs';
-import toastAdd from '../tasklist-add-modal/toastAdd.hbs';
-import toastInfo from '../tasklist-add-modal/toastInfo.hbs';
 
 
 
@@ -67,7 +63,6 @@ class addModalModel {
             const id = snapshot.id;
             const list = await this.getDocument(id)
             const result = { ...list, id: id }
-            //throw new Error
             this.eventBus.publish('task-data-added', { result, type: 'add' })
 
         } catch (e) {

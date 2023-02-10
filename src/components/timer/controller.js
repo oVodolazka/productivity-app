@@ -15,6 +15,7 @@ class TimerController {
         this.eventBus.subscribe('settings-break-ready',data => this.renderBreak(data))
         this.eventBus.subscribe('task-completed-pressed',data => this.completeTask(data))
         this.eventBus.subscribe('add-pomodoros-pressed', data => this.addPomodoros(data))
+        this.eventBus.subscribe('error-catched-timer', () => this.errorAppeared())
     }
 
     init() {
@@ -54,6 +55,9 @@ class TimerController {
     }
     addPomodoros(data){
         this.model.updatePomodoro(data)
+    }
+    errorAppeared(){
+        this.view.warnignToaster()
     }
 }
 

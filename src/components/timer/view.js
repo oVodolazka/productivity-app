@@ -4,6 +4,9 @@ import queryString from 'query-string';
 import { createElement } from '../../utils/common';
 import ProgressBar from 'progressbar.js'
 import { getDay } from '../../utils/common'
+import toastAdd from '../tasklist-add-modal/toastAdd.hbs';
+import toastWarning from '../tasklist-add-modal/toastWarning.hbs';
+import toastInfo from '../tasklist-add-modal/toastInfo.hbs';
 
 class TimerView {
     constructor() {
@@ -44,9 +47,9 @@ class TimerView {
             document.querySelector('.modal__button-fail').remove()
             document.querySelector('.modal__button-finish').remove()
             if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
-                this.task =  'successful'
+                this.task = 'successful'
             } else {
-                this.task =  'failed'
+                this.task = 'failed'
             }
             if (document.querySelector('.star-timer.not-started')) {
                 this.eventBus.publish('get-settings')
@@ -58,13 +61,20 @@ class TimerView {
                 document.querySelector('.modal-timer__left-button').setAttribute('style', 'display: block')
                 document.querySelector('.modal-timer__right-button').setAttribute('style', 'display: block')
                 const parsed = queryString.parse(location.search);
-                this.eventBus.publish('task-completed-pressed', { task:this.task, finishDate: getDay(), id: parsed.id })
+                this.eventBus.publish('task-completed-pressed', { task: this.task, finishDate: getDay(), id: parsed.id })
                 if (document.querySelector('.timer').querySelector('svg')) {
                     document.querySelector('.timer').querySelector('svg').remove()
                 }
                 clearInterval(this.intervalId)
                 document.querySelector('.modal__progress').remove()
             }
+            const footer = document.querySelector('.footer-timer')
+            const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
+            footer.appendChild(wrapper)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
+            setTimeout(() => {
+                wrapper.remove()
+            }, 2500)
         }
         else if (event.target.classList.contains('modal__button-finish')) {
             const parsed = queryString.parse(location.search);
@@ -74,17 +84,17 @@ class TimerView {
             document.querySelector('.modal__button-fail').remove()
             document.querySelector('.modal__button-finish').remove()
             if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
-                this.task =  'successful'
-            } 
+                this.task = 'successful'
+            }
             else {
-                this.task =  'failed'
+                this.task = 'failed'
             }
 
             if (document.querySelector('.star-timer.not-started')) {
                 this.eventBus.publish('get-settings')
             } else {
                 const parsed = queryString.parse(location.search);
-                this.eventBus.publish('task-completed-pressed', { task:this.task, id: parsed.id, finishDate: getDay() })
+                this.eventBus.publish('task-completed-pressed', { task: this.task, id: parsed.id, finishDate: getDay() })
                 document.querySelector('.modal-span').innerHTML = 'You Completed Task'
                 document.querySelector('.modal-span').setAttribute('style', 'font-size: 16px')
                 document.querySelector('.modal-span-min').innerHTML = ''
@@ -96,6 +106,13 @@ class TimerView {
                 }
                 clearInterval(this.intervalId)
             }
+            const footer = document.querySelector('.footer-timer')
+            const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
+            footer.appendChild(wrapper)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
+            setTimeout(() => {
+                wrapper.remove()
+            }, 2500)
         }
         else if (event.target.classList.contains('modal-timer__left-button')) {
             window.router.navigate('/task-list')
@@ -104,21 +121,24 @@ class TimerView {
             window.router.navigate('/reports')
         }
         else if (event.target.classList.contains('modal__button-start-task')) {
-            this.eventBus.publish('start-pressed')
             document.querySelector('.modal__button-start-task').remove()
             document.querySelector('.modal__button-finish-task').remove()
             const buttonWrap = document.querySelector('.modal__button-wrap')
-            createElement('button', buttonWrap, ['modal__button-fail'], 'Fail Pomodora')
+            createElement('button', buttonWrap, ['modal__button-fail', 'disabled-button'], 'Fail Pomodora')
             createElement('button', buttonWrap, ['modal__button-finish'], 'Finish Pomodora')
+            this.eventBus.publish('start-pressed')
+            setTimeout(() => {
+                document.querySelector('.modal__button-fail').classList.remove('disabled-button')
+            }, 200)
         }
         else if (event.target.classList.contains('modal__button-finish-task')) {
             const parsed = queryString.parse(location.search);
             if (document.querySelectorAll('.star-timer.finished').length > document.querySelectorAll('.star-timer.failed').length || document.querySelectorAll('.star-timer.finished').length == document.querySelectorAll('.star-timer.failed').length) {
-                this.task =  'successful'
+                this.task = 'successful'
             } else {
-                this.task =  'failed'
+                this.task = 'failed'
             }
-            this.eventBus.publish('task-completed-pressed', { task:this.task, id: parsed.id, finishDate: getDay() })
+            this.eventBus.publish('task-completed-pressed', { task: this.task, id: parsed.id, finishDate: getDay() })
             document.querySelector('.modal__button-start-task').remove()
             document.querySelector('.modal__button-finish-task').remove()
             document.querySelector('.modal-span').innerHTML = 'You Completed Task'
@@ -132,12 +152,19 @@ class TimerView {
                 document.querySelector('.timer').querySelector('svg').remove()
             }
             clearInterval(this.intervalId)
+            const footer = document.querySelector('.footer-timer')
+            const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
+            footer.appendChild(wrapper)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
+            setTimeout(() => {
+                wrapper.remove()
+            }, 2500)
         }
     }
 
     removeEventListeners() {
         const container = document.querySelector('.timer-container')
-        if(container) {
+        if (container) {
             container.removeEventListener('click', this.bindedonContainerClick)
         }
     }
@@ -182,6 +209,7 @@ class TimerView {
                 document.querySelector('.modal-span').innerHTML = 'Timer is over'
                 document.querySelector('.modal-span-min').innerHTML = ''
                 document.querySelector('.modal-span').setAttribute('style', 'font-size:14px')
+                document.querySelector('.timer').innerHTML = ''
             }
         }, 60000)
 
@@ -213,7 +241,10 @@ class TimerView {
 
         const buttonWrap = document.querySelector('.modal__button-wrap')
         if (!document.querySelector('.modal__button-fail')) {
-            createElement('button', buttonWrap, ['modal__button-fail'], 'Fail Pomodora')
+            createElement('button', buttonWrap, ['modal__button-fail', 'disabled-button'], 'Fail Pomodora')
+            setTimeout(() => {
+                document.querySelector('.modal__button-fail').classList.remove('disabled-button')
+            }, 200)
         }
 
         if (!document.querySelector('.modal__button-finish')) {
@@ -231,7 +262,6 @@ class TimerView {
 
         document.querySelector('.modal-span').innerHTML = data.shortBreak
         document.querySelector('.modal-span').setAttribute('style', 'font-size:19px')
-
         document.querySelector('.modal-span-min').innerHTML = 'min'
         const buttonWrap = document.querySelector('.modal__button-wrap')
         createElement('button', buttonWrap, ['modal__button-start-task'], 'Start Pomodora')
@@ -246,6 +276,7 @@ class TimerView {
                 document.querySelector('.modal-span').innerHTML = 'Break is over'
                 document.querySelector('.modal-span').setAttribute('style', 'font-size:14px')
                 document.querySelector('.modal-span-min').innerHTML = ''
+                document.querySelector('.timer').innerHTML = ''
             }
         }, 60000)
         let minutesToSeconds = data.shortBreak * 60
@@ -262,6 +293,15 @@ class TimerView {
     }
     removeTimer() {
         clearInterval(this.intervalId)
+    }
+    warnignToaster() {
+        const footer = document.querySelector('.footer-timer')
+        const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--red'], toastWarning())
+        footer.appendChild(wrapper)
+        document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
+        setTimeout(() => {
+            wrapper.remove()
+        }, 2500)
     }
 }
 
