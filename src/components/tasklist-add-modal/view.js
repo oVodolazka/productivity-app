@@ -230,7 +230,7 @@ class AddTaskModalView {
         }
         const footer = document.querySelector('.footer__button-wrap')
         const htmlToast = html;
-        const wrapper = createElement('div', footer, classes, htmlToast, [{ 'style': 'position: absolute; right: 7.4%;' }])
+        const wrapper = createElement('div', footer, classes, htmlToast)
         footer.appendChild(wrapper)
         document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
         setTimeout(() => {

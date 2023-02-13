@@ -12,6 +12,9 @@ body {
 .disabled {
     cursor: not-allowed;
 }
+.disabled-button{
+    pointer-events: none;
+}
 
 .header__span-title {
     color: white;
@@ -940,6 +943,9 @@ body {
         }
     }
     &__warning-notification {
+        position: fixed;
+        top: 730px;
+        right: 116px;
         display: flex;
         justify-content: space-between;
         border: 0.8px solid white;

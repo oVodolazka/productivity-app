@@ -43,8 +43,7 @@ class TasklistModel {
             return docSnap.data()
         }
         catch (e) {
-            console.log(e)
-            //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            console.error(e)
         }
     }
 
@@ -59,8 +58,7 @@ class TasklistModel {
             this.eventBus.publish('down-updated',data)
         }
         catch (e) {
-            console.log(e)
-            //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            console.error(e)
         }
     }
 
@@ -75,8 +73,7 @@ class TasklistModel {
             this.eventBus.publish('up-updated',data)
         }
         catch (e) {
-           console.log(e)
-            //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            console.error(e)
         }
     }
 
@@ -88,8 +85,7 @@ class TasklistModel {
             this.eventBus.publish('tasks-deleted', { data, html: toastInfo(), classes: ['footer__warning-notification', 'footer__warning-notification--blue'] })            
         }
         catch(e){
-            console.log(e)
-            this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
+            console.error(e)
         }
     }
 }

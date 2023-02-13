@@ -187,17 +187,21 @@ class TasklistView {
             return item.list == true && item.completed == done
         })
         const html = getTasklistHtml({ result });
-        const dataWrapper = document.querySelector('.settings__daily-container')
-        dataWrapper.innerHTML = html;
+        if (document.querySelector('.settings__daily-container')) {
+            const dataWrapper = document.querySelector('.settings__daily-container')
+            dataWrapper.innerHTML = html;
+        }
         if (document.querySelector('.header-icon-trash').classList.contains('active')) {
             const parent = document.querySelector('.settings__daily-container')
             const tasks = parent.querySelectorAll('.settings-delete-mode')
             tasks.forEach(item => item.classList.add('active'))
         }
 
-        if (document.querySelector('.delete-mode-up').querySelector('.select').classList.contains('active')) {
-            const tasks = document.querySelector('.settings__daily-container').querySelectorAll('.settings-delete-mode-icon')
-            tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
+        if (document.querySelector('.delete-mode-up')) {
+            if (document.querySelector('.delete-mode-up').querySelector('.select').classList.contains('active')) {
+                const tasks = document.querySelector('.settings__daily-container').querySelectorAll('.settings-delete-mode-icon')
+                tasks.forEach(task => task.className = 'settings-delete-mode-confirm')
+            }
         }
         this.updateCounter()
     }
