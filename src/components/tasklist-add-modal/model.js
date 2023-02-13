@@ -36,7 +36,7 @@ class addModalModel {
             this.eventBus.publish('on-task-data-updated', { data, type: 'warning' })
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
             this.eventBus.publish('error-catched', { type: 'error' })
         }
 
@@ -66,7 +66,7 @@ class addModalModel {
             this.eventBus.publish('task-data-added', { result, type: 'add' })
 
         } catch (e) {
-            console.log(e)
+            console.error(e)
             this.eventBus.publish('error-catched', { type: 'error' })
         }
     }
@@ -78,7 +78,7 @@ class addModalModel {
             return docSnap.data()
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 
@@ -88,7 +88,7 @@ class addModalModel {
             this.eventBus.publish('task-deleted', { id, type: 'delete' })
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
             this.eventBus.publish('error-catched', { type: 'error' })
         }
     }

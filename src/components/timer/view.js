@@ -71,10 +71,8 @@ class TimerView {
             const footer = document.querySelector('.footer-timer')
             const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
             footer.appendChild(wrapper)
-            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
-            setTimeout(() => {
-                wrapper.remove()
-            }, 2500)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => wrapper.remove())
+            setTimeout(() => wrapper.remove(), 2500)
         }
         else if (event.target.classList.contains('modal__button-finish')) {
             const parsed = queryString.parse(location.search);
@@ -109,10 +107,8 @@ class TimerView {
             const footer = document.querySelector('.footer-timer')
             const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
             footer.appendChild(wrapper)
-            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
-            setTimeout(() => {
-                wrapper.remove()
-            }, 2500)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => wrapper.remove())
+            setTimeout(() => wrapper.remove(), 2500)
         }
         else if (event.target.classList.contains('modal-timer__left-button')) {
             window.router.navigate('/task-list')
@@ -155,10 +151,8 @@ class TimerView {
             const footer = document.querySelector('.footer-timer')
             const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--blue'], toastInfo())
             footer.appendChild(wrapper)
-            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
-            setTimeout(() => {
-                wrapper.remove()
-            }, 2500)
+            document.querySelector('.footer__warning-notification-button').addEventListener('click', () => wrapper.remove())
+            setTimeout(() => wrapper.remove(), 2500)
         }
     }
 
@@ -298,10 +292,8 @@ class TimerView {
         const footer = document.querySelector('.footer-timer')
         const wrapper = createElement('div', footer, ['footer__warning-notification', 'footer__warning-notification--red'], toastWarning())
         footer.appendChild(wrapper)
-        document.querySelector('.footer__warning-notification-button').addEventListener('click', () => { wrapper.remove() })
-        setTimeout(() => {
-            wrapper.remove()
-        }, 2500)
+        document.querySelector('.footer__warning-notification-button').addEventListener('click', () => wrapper.remove())
+        setTimeout(() => wrapper.remove(), 2500)
     }
 }
 

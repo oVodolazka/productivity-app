@@ -16,8 +16,6 @@ class SettingsModel {
             this.eventBus.publish('settings-data-loaded',docSnap.data())
         }
         catch (e) {
-            console.log(e)
-            //this.eventBus.publish('error-catched', { html: toastWarning(), classes: ['footer__warning-notification', 'footer__warning-notification--red'] })
         }
     }
 
@@ -32,8 +30,6 @@ class SettingsModel {
             });
         }
         catch (e) {
-            console.log(e)
-            //this.eventBus.publish('error-catched', { type: 'error' })
         }
 
     }

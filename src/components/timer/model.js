@@ -24,7 +24,7 @@ class TimerModel {
             this.eventBus.publish('settings-data-ready', docSnap.data())
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
     async updateTask(data) {
@@ -37,7 +37,7 @@ class TimerModel {
             });
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
             this.eventBus.publish('error-catched-timer')
         }
     }
@@ -53,7 +53,7 @@ class TimerModel {
             this.eventBus.publish('settings-break-ready', docSnap.data())
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
     async updateTaskStatus(data) {
@@ -66,7 +66,7 @@ class TimerModel {
             });
         }
         catch (e) {
-            console.log(e)
+            console.error(e)
             this.eventBus.publish('error-catched-timer')
         }
     }

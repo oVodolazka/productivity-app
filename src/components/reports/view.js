@@ -257,35 +257,12 @@ class ReportsView {
             } else if (type == 'pomodoros') {
                 const days = []
                 past7Days.forEach(item => days.push(`${item[0]}${item[1]}`))
-                const obj = {}
-
-                period.forEach(item => {
-                    past7Days.forEach(date => {
-                        if (!obj[date]) {
-                            obj[date] = []
-                        }
-                    })
-                    if (obj[item.finishDate]) {
-                        obj[item.finishDate] = [...obj[item.finishDate], ...item.pomodoros]
-                    } else {
-                        obj[item.finishDate] = item.pomodoros
-                    }
-                })
-
+                const obj = this.preparedObject(past7Days, period)
                 const groups = ['failed', 'finished'];
                 const result = groups.map(item => ({
                     name: item,
-                    data: Object.keys(obj).reverse().map(key => {
-
-                        return obj[key].filter(status => status === item).length
-                    })
+                    data: Object.keys(obj).reverse().map(key => obj[key].filter(status => status === item).length)
                 }))
-
-                past7Days.forEach(date => {
-                    if (obj[date]) {
-                    }
-                })
-
 
                 Highcharts.chart('report-container', {
                     chart: {
@@ -294,12 +271,9 @@ class ReportsView {
                     xAxis: {
                         categories: days.reverse()
                     },
-
                     tooltip: {
-                        formatter: function () {
-                            return '<b>' + this.x + '</b><br/>' +
-                                this.series.name + ': ' + this.y + '<br/>'
-                        }
+                        headerFormat: '<b>{series.name}</b><br/>',
+                        pointFormat: 'Pomodoros: {point.y}'
                     },
 
                     plotOptions: {
@@ -395,34 +369,12 @@ class ReportsView {
             } else if (type == 'pomodoros') {
                 const days = []
                 past31Days.forEach(item => days.push(`${item[0]}${item[1]}`))
-                const obj = {}
-
-                period.forEach(item => {
-                    past31Days.forEach(date => {
-                        if (!obj[date]) {
-                            obj[date] = []
-                        }
-                    })
-                    if (obj[item.finishDate]) {
-                        obj[item.finishDate] = [...obj[item.finishDate], ...item.pomodoros]
-                    } else {
-                        obj[item.finishDate] = item.pomodoros
-                    }
-                })
-
+                const obj = this.preparedObject(past31Days, period)
                 const groups = ['failed', 'finished'];
                 const result = groups.map(item => ({
                     name: item,
-                    data: Object.keys(obj).reverse().map(key => {
-                        return obj[key].filter(status => status === item).length
-                    })
+                    data: Object.keys(obj).reverse().map(key => obj[key].filter(status => status === item).length)
                 }))
-
-                past7Days.forEach(date => {
-                    if (obj[date]) {
-                    }
-                })
-
 
                 Highcharts.chart('report-container', {
                     chart: {
@@ -491,6 +443,23 @@ class ReportsView {
         if (container) {
             container.removeEventListener('click', this.bindedonContainerClick)
         }
+    }
+
+    preparedObject(timeline, period) {
+        const obj = {}
+        period.forEach(item => {
+            timeline.forEach(date => {
+                if (!obj[date]) {
+                    obj[date] = []
+                }
+            })
+            if (obj[item.finishDate]) {
+                obj[item.finishDate] = [...obj[item.finishDate], ...item.pomodoros]
+            } else {
+                obj[item.finishDate] = item.pomodoros
+            }
+        })
+        return obj
     }
 }
 export default ReportsView
