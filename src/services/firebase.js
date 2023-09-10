@@ -5,12 +5,12 @@ import { getFirestore } from 'firebase/firestore/lite';
 class FirebaseService {
     constructor() {
         const firebaseConfig = {
-            apiKey: "AIzaSyBXnohuiOwAt7lqSKUzsfdYXnoX7CT2WI8",
-            authDomain: "productivity-paid.firebaseapp.com",
-            projectId: "productivity-paid",
-            storageBucket: "productivity-paid.appspot.com",
-            messagingSenderId: "985010783240",
-            appId: "1:985010783240:web:a223a2b697b8d56b463dbd"
+            apiKey: process.env.FIREBASE_API_KEY,
+            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+            projectId: process.env.FIREBASE_PROJECT_ID,
+            storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+            appId: process.env.FIREBASE_APP_ID,
           };
         const app = initializeApp(firebaseConfig);
         this.db = getFirestore(app);
